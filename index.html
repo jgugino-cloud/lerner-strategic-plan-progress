@@ -150,7 +150,10 @@ footer.note{color:var(--muted);font-size:12px;max-width:80ch;line-height:1.55}
 .hl-row .linkbtn{margin-top:0}
 .addrow{margin-top:12px}
 body.editing .card{cursor:pointer}
-@media print{#editbar,.edit-open{display:none!important}}
+.fallback{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.fallback[hidden]{display:none}
+.fallback a{color:var(--achieved);font-weight:700}
+@media print{#submit,#editbar,.edit-open{display:none!important}}
 </style>
 
 <header class="mast"><div class="wrap"><div class="mast-row"><div>
@@ -185,6 +188,29 @@ body.editing .card{cursor:pointer}
   </section>
 
   <section class="panel" id="detail" aria-live="polite"></section>
+
+  <section class="panel" id="submit" aria-labelledby="sub-h">
+    <h2 class="rv-h" id="sub-h">Submit an update</h2>
+    <p class="sub">Know of progress that isn’t shown here, or a highlight that needs correcting? Send it below. Updates are reviewed before they’re added to the dashboard.</p>
+    <form id="subForm" class="form" novalidate>
+      <div class="fgrid">
+        <label>Type of update<select id="f-type"><option value="add">New progress to add</option><option value="edit">Correct existing highlights</option></select></label>
+        <label>Pillar<select id="f-pillar"></select></label>
+        <label class="wide">Action item<select id="f-item"></select></label>
+        <label>Suggested status<select id="f-status"><option value="">No change</option><option value="a">Achieved</option><option value="p">In progress</option><option value="n">Not yet reported</option></select></label>
+        <label>Source link (optional)<input id="f-src" type="url" placeholder="https://…"></label>
+        <label class="wide"><span id="f-hl-lbl">What happened</span><textarea id="f-hl" rows="4"></textarea></label>
+        <label>Your name<input id="f-name" autocomplete="name"></label>
+        <label>Anything else (optional)<input id="f-note"></label>
+      </div>
+      <div class="factions"><button class="btn" type="submit">Send by email</button><span id="f-msg" class="fmsg" aria-live="polite"></span></div>
+      <div id="f-fallback" class="fallback" hidden>
+        <p class="fmsg">If your email app didn’t open, copy the text below and email it to <a id="f-mailto" href="#"></a>.</p>
+        <textarea id="f-copy" class="ed" rows="9" readonly aria-label="Update text to copy"></textarea>
+        <button type="button" class="linkbtn" id="f-copybtn">Copy text</button>
+      </div>
+    </form>
+  </section>
 
   <footer class="note" id="editNote" hidden>To update this page, click Edit, make your changes, then click “Save a copy.” Your browser downloads a new index.html with the changes included; upload it to the website to publish them. Open the file in a web browser (Chrome, Edge, Safari or Firefox) to edit it.</footer>
 </main>
@@ -1427,7 +1453,10 @@ function renderDetail(focusSel){
       }else{
         const hl=item[2].filter(x=>x.t.trim());
         r.appendChild(el("div",null,`<span class="status">${swatch(item[0])}${LABEL[item[0]]}</span>`));
-        r.appendChild(el("div","action",esc(item[1])));
+        const ac=el("div","action",esc(item[1]));ac.appendChild(el("br"));
+        const sb=el("button","suggest","Suggest an update");sb.type="button";sb.addEventListener("click",()=>openForm(p.id+"|"+oi+"|"+ii,"add"));ac.appendChild(sb);
+        if(hl.length){const eb=el("button","suggest","Suggest an edit");eb.type="button";eb.style.marginLeft="14px";eb.addEventListener("click",()=>openForm(p.id+"|"+oi+"|"+ii,"edit"));ac.appendChild(eb)}
+        r.appendChild(ac);
         r.appendChild(hl.length?el("ul","hl",hl.map(x=>`<li>${esc(x.t)}${validUrl(x.u)?` <a class="src" href="${esc(x.u.trim())}" target="_blank" rel="noopener">Source</a>`:""}</li>`).join("")):el("ul","hl none","<li>No progress reported yet.</li>"));
       }
       s.appendChild(r);
@@ -1460,6 +1489,7 @@ function setEditMsg(t){editMsg.textContent=t||(dirty?"Unsaved changes. Use “Sa
 function setEditing(on){
   editing=on;bar.hidden=!on;editBtn.hidden=on||!canEdit;document.body.classList.toggle("editing",on);
   if(on){asofIn.value=DATA.asOf||"";setEditMsg()}
+  if(window.fillItems)fillItems(fI.value);
   renderDetail();
 }
 editBtn.addEventListener("click",()=>{setEditing(true);document.getElementById("detail").scrollIntoView({block:"start"})});
@@ -1475,6 +1505,58 @@ document.getElementById("saveBtn").addEventListener("click",()=>{
 });
 window.addEventListener("beforeunload",e=>{if(dirty){e.preventDefault();e.returnValue=""}});
 
+
+// ---- Submit an update (by email) ----
+const OWNER_EMAIL="jgugino@udel.edu";
+const SLBL={"":"No change",a:"Achieved",p:"In progress",n:"Not yet reported"};
+const fT=document.getElementById("f-type"),fP=document.getElementById("f-pillar"),fI=document.getElementById("f-item"),fS=document.getElementById("f-status"),fH=document.getElementById("f-hl"),fHL=document.getElementById("f-hl-lbl"),fU=document.getElementById("f-src"),fNm=document.getElementById("f-name"),fN=document.getElementById("f-note"),fMsg=document.getElementById("f-msg"),fFb=document.getElementById("f-fallback"),fCopy=document.getElementById("f-copy"),fMail=document.getElementById("f-mailto");
+fMail.href="mailto:"+OWNER_EMAIL;fMail.textContent=OWNER_EMAIL;
+const ADD_PH="One highlight per line, for example: Hosted the spring research showcase with 40 attendees";
+let prefill="";
+function itemByKey(k){const [pid,oi,ii]=String(k).split("|");const p=PILLARS.find(x=>x.id===pid);const o=p&&p.objectives[+oi];const it=o&&o.items[+ii];return it?{p,o,it}:null}
+function fillItems(sel){
+  if(!fP.options.length||fP.options.length!==PILLARS.length){const keep=fP.value;fP.innerHTML="";PILLARS.forEach(p=>fP.appendChild(new Option(p.name,p.id)));if(keep)fP.value=keep}
+  if(sel)fP.value=String(sel).split("|")[0];
+  const p=PILLARS.find(x=>x.id===fP.value)||PILLARS[0];fI.innerHTML="";
+  p.objectives.forEach((o,oi)=>{const g=document.createElement("optgroup");g.label=o.t;o.items.forEach((it,ii)=>{const t=it[1]||"(untitled action item)";g.appendChild(new Option(t.length>110?t.slice(0,107)+"…":t,p.id+"|"+oi+"|"+ii))});fI.appendChild(g)});
+  if(sel&&itemByKey(sel))fI.value=sel;
+}
+window.fillItems=fillItems;
+function syncType(){const ed=fT.value==="edit";fHL.textContent=ed?"Highlights (edit the wording, one per line)":"What happened";fH.placeholder=ed?"":ADD_PH;
+  if(ed){const f=itemByKey(fI.value);prefill=f?f.it[2].filter(h=>h.t.trim()).map(h=>h.t).join("\n"):"";fH.value=prefill}else{if(fH.value===prefill)fH.value="";prefill=""}}
+fP.addEventListener("change",()=>{fillItems();if(fT.value==="edit")syncType()});
+fI.addEventListener("change",()=>{if(fT.value==="edit")syncType()});
+fT.addEventListener("change",syncType);
+function openForm(k,mode){fT.value=mode;fillItems(k);syncType();document.getElementById("submit").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});setTimeout(()=>fH.focus({preventScroll:true}),400)}
+function setMsg(t,err){fMsg.textContent=t;fMsg.classList.toggle("err",!!err)}
+document.getElementById("subForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const lines=fH.value.split("\n").map(x=>x.trim()).filter(Boolean);
+  if(fT.value==="edit"&&fH.value===prefill&&!fS.value){setMsg("Change the wording before sending.",true);fH.focus();return}
+  if(!lines.length&&!fS.value){setMsg("Add at least one highlight or choose a status change.",true);fH.focus();return}
+  const src=fU.value.trim();
+  if(src&&!validUrl(src)){setMsg("The source link needs to start with https://",true);fU.focus();return}
+  if(!fNm.value.trim()){setMsg("Add your name so the update can be followed up.",true);fNm.focus();return}
+  const f=itemByKey(fI.value);if(!f){setMsg("Choose an action item.",true);return}
+  const ed=fT.value==="edit";
+  const b=["Strategic plan dashboard update",""
+    ,"Type: "+(ed?"Correct existing highlights":"New progress to add")
+    ,"Pillar: "+f.p.name,"Objective: "+f.o.t,"Action item: "+f.it[1]
+    ,"Current status: "+LABEL[f.it[0]],"Suggested status: "+SLBL[fS.value],""];
+  if(ed){b.push("Current highlights:",...f.it[2].filter(h=>h.t.trim()).map(h=>"- "+h.t),"","Suggested wording:")}else b.push("What happened:");
+  b.push(...(lines.length?lines.map(x=>"- "+x):["(none)"]));
+  if(src)b.push("","Source: "+src);
+  if(fN.value.trim())b.push("","Note: "+fN.value.trim());
+  b.push("","From: "+fNm.value.trim());
+  const body=b.join("\n"),subject="Plan dashboard update: "+f.p.name;
+  fCopy.value="To: "+OWNER_EMAIL+"\nSubject: "+subject+"\n\n"+body;fFb.hidden=false;
+  let url="mailto:"+OWNER_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body.replace(/\n/g,"\r\n"));
+  if(url.length>1900)url="mailto:"+OWNER_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent("(This update is long. Please paste the copied text from the dashboard here.)");
+  window.location.href=url;
+  setMsg("Your email app should open with the update filled in. Press Send there to finish.");
+});
+document.getElementById("f-copybtn").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(fCopy.value);setMsg("Copied. Paste it into an email to "+OWNER_EMAIL+".")}catch(e){fCopy.focus();fCopy.select();setMsg("Select the text and copy it.")}});
+fillItems();syncType();
 editBtn.hidden=!canEdit;document.getElementById("editNote").hidden=!canEdit;
 renderAsOf();
 renderSummary();
