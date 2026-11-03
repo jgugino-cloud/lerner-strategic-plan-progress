@@ -1,0 +1,1484 @@
+<!doctype html><html><head><meta charset="utf-8"><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Lerner Plan Progress</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&family=Source+Serif+4:opsz,wght@8..60,400&display=swap">
+<style>
+/* Layout: UD-blue masthead band, summary panel, 3-up pillar grid (Foundations / Frontiers), selected pillar's action-item table below */
+:root{
+  --bg:#F3F5F9; --surface:#FFFFFF; --fg:#14213A; --muted:#5E6B82; --line:#DDE3EC;
+  --brand:#00539F; --brand-ink:#FFFFFF; --gold:#FFD200;
+  --achieved:#00539F; --progress:#EBB000; --none:#9AA5B8;
+  --hl-bg:#E8F0F9; --hl-none:#FFFFFF; --err:#B3261E;
+  --font-ui:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-serif:"Source Serif 4",Georgia,"Times New Roman",serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0E1522; --surface:#162133; --fg:#E7ECF4; --muted:#9AA8BE; --line:#26344B;
+  --brand:#0A4A8C; --brand-ink:#FFFFFF; --gold:#FFD200;
+  --achieved:#4D9BE6; --progress:#F2C230; --none:#6F7C92;
+  --hl-bg:#1C2D46; --hl-none:#162133; --err:#FF8A80; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0E1522; --surface:#162133; --fg:#E7ECF4; --muted:#9AA8BE; --line:#26344B;
+  --brand:#0A4A8C; --brand-ink:#FFFFFF; --gold:#FFD200;
+  --achieved:#4D9BE6; --progress:#F2C230; --none:#6F7C92;
+  --hl-bg:#1C2D46; --hl-none:#162133; --err:#FF8A80; color-scheme:dark}
+
+body{background:var(--bg);color:var(--fg);font-family:var(--font-ui);font-size:14px;line-height:1.45}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.mast{background:var(--brand);color:var(--brand-ink)}
+header.mast .wrap{padding-block:22px 26px}
+.eyebrow{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.mast .eyebrow{color:var(--gold);font-size:clamp(13px,1.8vw,16px);letter-spacing:.1em}
+.mast .asof{margin-top:6px;font-size:12.5px;opacity:.85}
+.mast h1{margin:6px 0 0;font-size:clamp(24px,4vw,34px);font-weight:800;letter-spacing:-.01em;text-wrap:balance}
+main.wrap{padding-block:20px 40px;display:flex;flex-direction:column;gap:24px}
+
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:20px}
+.label{font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.big{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-top:10px}
+.big .n{font-size:clamp(38px,7vw,52px);font-weight:800;line-height:1;font-variant-numeric:tabular-nums;color:var(--achieved)}
+.big .n span{color:var(--muted)}
+.big .t{font-weight:700;font-size:15px}
+.sub{color:var(--muted);margin:8px 0 14px}
+
+.blocks{display:grid;gap:3px}
+.blk{height:12px;border-radius:2px}
+.blk.a{background:var(--achieved)}
+.blk.p{background:var(--progress)}
+.blk.n{background:repeating-linear-gradient(135deg,transparent 0 3px,var(--none) 3px 4.5px);box-shadow:inset 0 0 0 1px var(--none)}
+.legend{display:flex;flex-wrap:wrap;gap:18px;margin-top:12px;font-size:12.5px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend b{font-variant-numeric:tabular-nums}
+.sw{width:11px;height:11px;border-radius:2px;display:inline-block;flex:none}
+
+.sec-head{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.sec-head h2{margin:0;font-size:17px;font-weight:700}
+.sec-head .hint{color:var(--muted);font-size:12.5px}
+.group-label{margin:14px 0 8px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:860px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.grid{grid-template-columns:1fr}}
+.card{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:8px;background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px 16px;cursor:pointer;transition:border-color .15s,box-shadow .15s}
+.card:hover{border-color:var(--achieved)}
+.card:focus-visible{outline:2px solid var(--achieved);outline-offset:2px}
+.card[aria-pressed="true"]{border-color:var(--achieved);box-shadow:0 0 0 1px var(--achieved)}
+.card h3{margin:0;font-size:14px;font-weight:700}
+.card .cnt{display:flex;align-items:baseline;gap:8px}
+.card .cnt strong{font-size:22px;font-weight:800;font-variant-numeric:tabular-nums}
+.card .cnt small{color:var(--muted);font-size:12px}
+.card .blocks .blk{height:9px}
+.card .foot{color:var(--muted);font-size:12px}
+
+/* Detail */
+#detail{scroll-margin-top:16px}
+.detail-head h2{margin:6px 0 10px;font-size:clamp(22px,3.5vw,28px);font-weight:800}
+.detail-head .eyebrow{color:var(--achieved)}
+.goal{font-family:var(--font-serif);font-size:16px;line-height:1.55;color:var(--muted);max-width:62ch;margin:0}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+.chip{all:unset;cursor:pointer;font-size:12.5px;font-weight:600;padding:6px 12px;border-radius:999px;border:1px solid var(--line);display:inline-flex;align-items:center;gap:6px}
+.chip[aria-pressed="true"]{background:var(--fg);color:var(--surface);border-color:var(--fg)}
+.chip:focus-visible{outline:2px solid var(--achieved);outline-offset:2px}
+.objective{margin-top:26px}
+.objective h3{font-size:13.5px;font-weight:700;margin:0 0 6px;padding-bottom:8px;border-bottom:2px solid var(--line)}
+.row{display:grid;grid-template-columns:130px minmax(0,1.2fr) minmax(0,1fr);gap:16px;padding:14px 0;border-bottom:1px solid var(--line);align-items:start}
+.row.th{padding:8px 0;font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.status{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;white-space:nowrap}
+.action{font-weight:600;font-size:13.5px}
+.hl{margin:0;padding:10px 14px 10px 28px;background:var(--hl-bg);border-radius:6px;font-size:12.5px;display:flex;flex-direction:column;gap:5px}
+.hl.none{list-style:none;padding-left:14px;background:var(--hl-none);border:1px solid var(--line);font-style:italic;color:var(--muted)}
+.hl a.src{font-size:11px;font-weight:700;color:var(--achieved);text-decoration:none;white-space:nowrap}
+.hl a.src:hover{text-decoration:underline}
+.hl a.src:focus-visible{outline:2px solid var(--achieved);outline-offset:1px}
+.empty{color:var(--muted);padding:14px 0;font-style:italic}
+.form{margin-top:14px}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}
+.fgrid label{display:flex;flex-direction:column;gap:5px;font-size:12px;font-weight:600;color:var(--muted);min-width:0}
+.fgrid .wide{grid-column:1/-1}
+@media (max-width:560px){.fgrid{grid-template-columns:1fr}}
+.fgrid select,.fgrid input,.fgrid textarea{font:inherit;font-size:13.5px;font-weight:400;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:8px 10px;width:100%;box-sizing:border-box;min-width:0}
+.fgrid select:focus-visible,.fgrid input:focus-visible,.fgrid textarea:focus-visible{outline:2px solid var(--achieved);outline-offset:1px}
+.factions{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:14px}
+.btn{all:unset;cursor:pointer;background:var(--achieved);color:var(--surface);font-weight:700;font-size:13px;padding:9px 16px;border-radius:6px}
+.btn:focus-visible{outline:2px solid var(--fg);outline-offset:2px}
+.btn[disabled]{opacity:.55;cursor:default}
+.fmsg{font-size:12.5px;color:var(--muted)}
+.fmsg.err{color:var(--err)}
+.suggest{all:unset;cursor:pointer;display:inline-block;margin-top:6px;font-size:11.5px;font-weight:600;color:var(--achieved)}
+.suggest:hover{text-decoration:underline}
+.suggest:focus-visible{outline:2px solid var(--achieved);outline-offset:2px}
+.slist{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.sitem{border:1px solid var(--line);border-radius:6px;padding:10px 12px;font-size:12.5px;display:flex;flex-direction:column;gap:5px}
+.meta{color:var(--muted);font-size:11.5px}
+.sitem .ttl{font-weight:600}
+.sitem .acts{display:flex;gap:8px;margin-top:4px;flex-wrap:wrap}
+.tag{font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:999px;border:1px solid var(--line);white-space:nowrap}
+#mine,#review{margin-top:24px;display:flex;flex-direction:column;gap:8px}
+#mine[hidden],#review[hidden]{display:none}
+.rv-h{margin:0;font-size:15px}
+@media (max-width:720px){
+  .row{grid-template-columns:1fr;gap:8px}
+  .row.th{display:none}
+}
+footer.note{color:var(--muted);font-size:12px;max-width:80ch;line-height:1.55}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* Edit mode */
+.mast-row{display:flex;justify-content:space-between;align-items:flex-start;gap:16px}
+.edit-open{all:unset;cursor:pointer;flex:none;margin-top:4px;font-size:13px;font-weight:700;padding:8px 14px;border-radius:6px;border:1px solid rgba(255,255,255,.55);color:var(--brand-ink)}
+.edit-open:hover{background:rgba(255,255,255,.12)}
+.edit-open:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.edit-open[hidden]{display:none}
+#editbar{position:sticky;top:0;z-index:10;background:var(--gold);color:#14213A;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+#editbar[hidden]{display:none}
+#editbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px;padding-block:10px}
+#editbar strong{font-size:14px}
+#editbar label{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600}
+#editbar input{font:inherit;font-size:13px;padding:5px 8px;border:1px solid rgba(0,0,0,.25);border-radius:5px;background:#fff;color:#14213A}
+#editMsg{font-size:12.5px;flex:1 1 200px}
+#editbar .btn{background:#14213A;color:#fff}
+#editbar .btn.ghost{background:transparent;color:#14213A;box-shadow:inset 0 0 0 1px #14213A}
+.ed{font:inherit;font-size:13px;font-weight:400;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:7px 9px;width:100%;box-sizing:border-box;min-width:0;resize:vertical}
+.ed:focus-visible{outline:2px solid var(--achieved);outline-offset:1px}
+.hl-edit{display:flex;flex-direction:column;gap:10px}
+.hl-row{display:flex;flex-direction:column;gap:5px;padding:10px;border:1px solid var(--line);border-radius:6px;background:var(--hl-bg)}
+.warn{font-size:11.5px;color:var(--err)}.warn:empty{display:none}
+.linkbtn{all:unset;cursor:pointer;align-self:flex-start;display:inline-block;margin-top:6px;font-size:12px;font-weight:700;color:var(--achieved)}
+.linkbtn:hover{text-decoration:underline}
+.linkbtn:focus-visible{outline:2px solid var(--achieved);outline-offset:2px}
+.linkbtn.danger{color:var(--err);font-weight:600;font-size:11.5px}
+.hl-row .linkbtn{margin-top:0}
+.addrow{margin-top:12px}
+body.editing .card{cursor:pointer}
+@media print{#editbar,.edit-open{display:none!important}}
+</style>
+
+<header class="mast"><div class="wrap"><div class="mast-row"><div>
+  <div class="eyebrow">Lerner College of Business and Economics</div>
+  <h1>2025–2030 Strategic Plan Progress</h1>
+  <div class="asof" id="asof">Snapshot as of November 3, 2026</div>
+  </div><button type="button" class="edit-open" id="editBtn" hidden>Edit</button></div>
+</div></header>
+<div id="editbar" hidden><div class="wrap">
+  <strong>Editing</strong>
+  <label>Snapshot date <input type="date" id="asofIn"></label>
+  <span id="editMsg" aria-live="polite"></span>
+  <button type="button" class="btn" id="saveBtn">Save a copy</button>
+  <button type="button" class="btn ghost" id="doneBtn">Done</button>
+</div></div>
+
+<main class="wrap">
+  <section class="panel" aria-labelledby="ov">
+    <div class="label" id="ov">Across all six pillars</div>
+    <div class="big"><div class="n" id="ovNum"></div><div class="t">action items achieved</div></div>
+    <p class="sub" id="ovSub"></p>
+    <div class="blocks" id="ovBlocks"></div>
+    <div class="legend" id="ovLegend"></div>
+  </section>
+
+  <section aria-labelledby="pp">
+    <div class="sec-head"><h2 id="pp">Progress by pillar</h2><span class="hint">Select a pillar to see each action item</span></div>
+    <div class="label group-label">Foundations</div>
+    <div class="grid" id="gridF"></div>
+    <div class="label group-label">Frontiers</div>
+    <div class="grid" id="gridR"></div>
+  </section>
+
+  <section class="panel" id="detail" aria-live="polite"></section>
+
+  <footer class="note" id="editNote" hidden>To update this page, click Edit, make your changes, then click “Save a copy.” Your browser downloads a new index.html with the changes included; upload it to the website to publish them. Open the file in a web browser (Chrome, Edge, Safari or Firefox) to edit it.</footer>
+</main>
+
+<script type="application/json" id="plan-data">{
+ "asOf": "2026-11-03",
+ "pillars": [
+  {
+   "id": "education",
+   "kind": "Foundation",
+   "name": "Distinctive Lerner Education",
+   "goal": "To achieve top-tier alumni satisfaction ratings and peer-leading career outcomes through academically rigorous, future-ready education, impactful experiential activities and world-class professional development.",
+   "objectives": [
+    {
+     "t": "Ensure a rigorous, future-ready education to thrive in a dynamic world",
+     "items": [
+      [
+       "a",
+       "Enhance assurance of learning, rigor and fundamental competencies in all our academic programs.",
+       [
+        {
+         "t": "AACSB accreditation extension maintained",
+         "u": ""
+        },
+        {
+         "t": "100/100 faculty credential teaching score for three consecutive years (2023–2025)",
+         "u": ""
+        },
+        {
+         "t": "AACSB strategic tracking module deployed",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Improve the relevance and competitiveness of our academic programs through expanding and strengthening advisory boards and industry connections.",
+       [
+        {
+         "t": "Ranked #52 nationally for undergraduate business by Poets & Quants, up 13 spots and named “10 to Watch”",
+         "u": ""
+        },
+        {
+         "t": "#26 of 377 Best Online MBA Programs (U.S. News & World Report, 2026)",
+         "u": ""
+        },
+        {
+         "t": "Named one of Poets&Quants’ 10 Business Schools to Watch of 2026",
+         "u": "https://lerner.udel.edu/seeing-opportunity/lerner-listed-among-pq-10-business-schools-to-watch-of-2026"
+        },
+        {
+         "t": "Expanded the Lerner Business Advisory Board",
+         "u": ""
+        },
+        {
+         "t": "Collaborated with Microsoft and AWS on course module design",
+         "u": ""
+        },
+        {
+         "t": "SHRM partnership for undergraduate HR certification pathways",
+         "u": ""
+        },
+        {
+         "t": "Pilot framework for college-wide corporate engagement",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Weave the three Lerner Frontiers—AI Transformation & Technology, Innovation and Societal Change, and Leadership & Organizations—appropriately throughout the business and economics curricula to ensure seamless integration into the educational experience.",
+       [
+        {
+         "t": "Responsible AI and simulation modules in core courses",
+         "u": ""
+        },
+        {
+         "t": "Entrepreneurship minors",
+         "u": ""
+        },
+        {
+         "t": "Leadership Certificate tied to student organization governance",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Continuously review all our academic programs to identify new opportunities to enrich our program portfolio and phase out those that are out-of-date or not aligned with our strategic priorities.",
+       [
+        {
+         "t": "Reorganized from 5 to 6 departments and a school, including a new BAOT department",
+         "u": ""
+        },
+        {
+         "t": "Launched FinTech, HR Management and AI programs",
+         "u": ""
+        },
+        {
+         "t": "Redesigned the marketing B.S. with customer strategy and sales leadership concentrations",
+         "u": ""
+        },
+        {
+         "t": "Established STEM certificate and study pathways",
+         "u": ""
+        },
+        {
+         "t": "Exploring pharmaco-economics degree pathways",
+         "u": ""
+        },
+        {
+         "t": "Phase-outs not reported",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Elevate Student Success through Advising, Mentoring and Career Outcomes",
+     "items": [
+      [
+       "p",
+       "Unify all academic support services into one comprehensive center to magnify the impact of career services, advising, and UDREAM on students’ current and future success.",
+       [
+        {
+         "t": "Siegfried Hall plans include a Student Success and Excellence Center for advising and career services",
+         "u": "https://www.udel.edu/udaily/2025/march/robert-kathleen-siegfried-historic-gift-lerner-college/"
+        },
+        {
+         "t": "Siegfried Hall is still in planning",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Augment and strengthen our alumni and industry mentoring networks to create more mentoring opportunities with students.",
+       [
+        {
+         "t": "1:1 Executive Mentoring pairs about 700 students a year",
+         "u": ""
+        },
+        {
+         "t": "Lerner Edge reaches 700+ students",
+         "u": ""
+        },
+        {
+         "t": "Executive in Residence program created",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Expand alumni and industry outreach to generate more internships, co-ops and career opportunities for Lerner students.",
+       [
+        {
+         "t": "95% placement rate and $70,000 average starting salary",
+         "u": "https://poetsandquants.com/2025/08/14/inside-the-120-million-plan-to-transform-delawares-lerner-college/"
+        },
+        {
+         "t": "Lerner Co-op delivered 60+ paid placements in under two years",
+         "u": ""
+        },
+        {
+         "t": "Job Shadow Program hosted 30+ experiences in its pilot year",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Develop and Execute a Holistic Strategy of Student Enrollment",
+     "items": [
+      [
+       "p",
+       "Expand partnerships with undergraduate institutions, industry organizations and international universities to attract a diverse and talented pool of prospective graduate students.",
+       [
+        {
+         "t": "30+ 4+1 programs launched, including interdisciplinary pairings",
+         "u": ""
+        },
+        {
+         "t": "MAEEE has 540+ graduates from 39 states and 15 countries",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Enhance K-12 outreach and expand partnerships with high schools, community colleges and international organizations to position the Lerner College as a top choice for aspiring business and economics students while attracting a diverse and talented undergraduate student body.",
+       [
+        {
+         "t": "CEEE delivered 111 programs reaching 2,291 educators and 9,079 students",
+         "u": ""
+        },
+        {
+         "t": "Bank At School in 42 schools, giving 22,347 students savings access through 25 banks and credit unions",
+         "u": ""
+        },
+        {
+         "t": "Led statewide support for Delaware’s HB 203 financial literacy graduation requirement",
+         "u": ""
+        },
+        {
+         "t": "Robinhood Grant for Youth Financial Literacy",
+         "u": ""
+        },
+        {
+         "t": "ME* Competition engaged nearly 500 elementary students",
+         "u": ""
+        },
+        {
+         "t": "Delaware students placed second nationally in the Personal Finance Challenge",
+         "u": ""
+        },
+        {
+         "t": "CEEE received the Albert Beekhuis Center of Excellence Award",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Strengthen Experiential Learning & Co-Curricular Opportunities",
+     "items": [
+      [
+       "a",
+       "Increase learning activities, industry networking, and recognition associated with meaningful student club and co-curricular involvement/creation.",
+       [
+        {
+         "t": "Advisors and mentorship for 30+ student-led organizations",
+         "u": ""
+        },
+        {
+         "t": "Blue Hen Investment Club and Financial Planning Center scaled",
+         "u": ""
+        },
+        {
+         "t": "Leadership & Ethics Case Competition launched in 2024",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Create meaningful high-impact experiential learning experiences with industry in curricular and extracurricular spaces.",
+       [
+        {
+         "t": "Co-op and Job Shadow programs",
+         "u": ""
+        },
+        {
+         "t": "Career Lab with Forage job simulations",
+         "u": ""
+        },
+        {
+         "t": "Global business capstones",
+         "u": ""
+        },
+        {
+         "t": "Experiential projects from the first semester",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "scholarship",
+   "kind": "Foundation",
+   "name": "Lerner Scholarship",
+   "goal": "To achieve peer-leading growth in premier academic journal publications by providing ample resources, strengthening our research culture, and supporting impactful internal and external dissemination of top scholarship.",
+   "objectives": [
+    {
+     "t": "Provide Resources to Support Top-Journal Productivity",
+     "items": [
+      [
+       "a",
+       "Increase funding for faculty research and access to essential databases and other sources.",
+       [
+        {
+         "t": "30+ internal research grants",
+         "u": ""
+        },
+        {
+         "t": "Research assistant and postdoc support",
+         "u": ""
+        },
+        {
+         "t": "LLM subscriptions",
+         "u": ""
+        },
+        {
+         "t": "Streamlined funding workflows",
+         "u": ""
+        },
+        {
+         "t": "53 publications in FT50, UTD24 and Department-A ranked journals since 2024",
+         "u": ""
+        },
+        {
+         "t": "Output includes Management Science, Marketing Science, AMJ and AMR",
+         "u": ""
+        },
+        {
+         "t": "Secure computing environments for 9 data use agreements on controlled data",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Assist with securing external grants and continue to expand Lerner Faculty Research Grants.",
+       [
+        {
+         "t": "Templeton Foundation grant for EARTH Institute expansion",
+         "u": ""
+        },
+        {
+         "t": "About 3 interdisciplinary grants totaling $3.4M",
+         "u": ""
+        },
+        {
+         "t": "Sieg-Character Lab mini-grants launched",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Provide marketing and recognition support for top-tier publications.",
+       [
+        {
+         "t": "UDaily feature on a management faculty review in Academy of Management Annals (May 2026)",
+         "u": "https://www.udel.edu/udaily/2026/may/greed-research-lerner-management-professors/"
+        },
+        {
+         "t": "UDaily feature on Beth Schinoff’s chronic pain research (May 2026)",
+         "u": "https://www.udel.edu/udaily/2026/may/beth-schinoff-chronic-pain-research/"
+        },
+        {
+         "t": "No formal publication recognition program found",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Strengthen Our Research Culture",
+     "items": [
+      [
+       "a",
+       "Host, expand and encourage participation in research activities to promote collaboration and continuous learning (e.g. “lunch & learn”, external seminars and conferences).",
+       [
+        {
+         "t": "Management Research Summit drew 18+ Mid-Atlantic schools in March 2025, its largest yet",
+         "u": "https://lerner.udel.edu/seeing-opportunity/lerner-hosts-annual-management-research-summit/"
+        },
+        {
+         "t": "FinTech & Financial Institutions Research Conference co-hosted with the Philadelphia Fed (April 2026)",
+         "u": "https://www.philadelphiafed.org/calendar-of-events/2026-fintech-and-financial-institutions-research-conference"
+        },
+        {
+         "t": "IRRCi corporate governance research symposium with ECGI (March 2025)",
+         "u": "https://udel.edu/udaily/2025/april/for-the-record-friday-april-18-2025"
+        },
+        {
+         "t": "Global teaching workshop on AI drew nearly 200 educators from 140+ universities (May 2025)",
+         "u": "https://www.udel.edu/udaily/2025/may/the-lerner-college-hosts-global-teaching-workshop-on-ai"
+        }
+       ]
+      ],
+      [
+       "p",
+       "Organize research clusters around the Lerner Frontiers to encourage interdisciplinary research and learning.",
+       [
+        {
+         "t": "Interdisciplinary teams formed on public health and sustainability",
+         "u": ""
+        },
+        {
+         "t": "Research Translation pilot launched",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Foster and/or strengthen mentoring relationships for new faculty and graduate students.",
+       [
+        {
+         "t": "Graduate Student Research & Travel Support Grants Program established",
+         "u": ""
+        },
+        {
+         "t": "Research computing environments built for 14 PhD and Master’s projects",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Recognize research excellence for quality and productivity.",
+       [
+        {
+         "t": "Professor Fei Xie named inaugural Faculty Research Director at the Weinberg Center",
+         "u": ""
+        },
+        {
+         "t": "National honors including Thinkers50, Highly Cited Researcher, a Fulbright, the AOM Decade Award, a JMR long-term impact award and the O’Neill Multiplier Award",
+         "u": ""
+        },
+        {
+         "t": "Poets&Quants Top 50 Undergraduate Business Professors (Dr. Julia Bayuk, Dr. Stephanie Raible)",
+         "u": ""
+        },
+        {
+         "t": "Editorial board roles at FT50 journals",
+         "u": ""
+        },
+        {
+         "t": "Faculty leadership roles in DSI, SMA, AOM and INFORMS",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Support Impactful Internal & External Dissemination of Scholarship",
+     "items": [
+      [
+       "p",
+       "Fund participation in prestigious conferences for presenting research.",
+       [
+        {
+         "t": "Graduate student travel grants launched",
+         "u": ""
+        },
+        {
+         "t": "Faculty conference funding not reported",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Organize and promote internal research events like the Lerner Faculty Research Showcase and Distinguished Speaker Series to recognize faculty’s research achievements.",
+       [
+        {
+         "t": "Inaugural Lerner Distinguished Faculty Speaker Series featured Carlos Asarta and Bintong Chen (March 2025)",
+         "u": "https://www.udel.edu/udaily/2025/february/inaugural-lerner-distinguished-faculty-speaker-series/"
+        },
+        {
+         "t": "No Faculty Research Showcase found since November 2023",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Promote faculty expertise and publications through strategic marketing efforts.",
+       [
+        {
+         "t": "78 media stories listed for 2025–26, in outlets including The New York Times, Reuters, Bloomberg, CNBC and Forbes",
+         "u": "https://lerner.udel.edu/seeing-opportunity/lerner-faculty-staff-in-the-news/"
+        },
+        {
+         "t": "Academic Showcase web hub features faculty research and honors",
+         "u": "https://lerner.udel.edu/faculty-and-research/academic-showcase/"
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "operations",
+   "kind": "Foundation",
+   "name": "Operational Excellence",
+   "goal": "To drive faculty, staff and student satisfaction and success by committing to operational excellence, prioritizing state-of-the-art facilities, fostering a culture of respect and inclusion, and maintaining a robust candidate pipeline for student recruitment and development.",
+   "objectives": [
+    {
+     "t": "Enhance college-organizational structure, physical facilities and digital presence to encourage collaboration and drive transformative excellence.",
+     "items": [
+      [
+       "p",
+       "Build a state-of-the-art facility with cutting-edge technology and flexible learning spaces to support instruction, collaboration, faculty-student engagement, industry partnerships and innovative co-curricular activities.",
+       [
+        {
+         "t": "$71.5M Siegfried gift secured for Siegfried Hall",
+         "u": ""
+        },
+        {
+         "t": "VDC Annex development plans approved",
+         "u": ""
+        },
+        {
+         "t": "Financial Planning Center opened with Charles Schwab",
+         "u": ""
+        },
+        {
+         "t": "Space utilization audit and fixes for bottlenecks in Purnell and Lerner Halls",
+         "u": ""
+        },
+        {
+         "t": "Technology upgrades to two computing labs serving 17 courses",
+         "u": ""
+        },
+        {
+         "t": "More than $60M of the $120M Transformative Excellence investment secured (August 2025)",
+         "u": "https://poetsandquants.com/2025/08/14/inside-the-120-million-plan-to-transform-delawares-lerner-college/"
+        }
+       ]
+      ],
+      [
+       "a",
+       "Optimize the organizational structure to align with Lerner’s transformative excellence goals and operational efficiency.",
+       [
+        {
+         "t": "Academic reorganization into 6 departments and a school, effective July 1, 2026",
+         "u": "https://lerner.udel.edu/seeing-opportunity/lerner-reorganizes-departments-launches-new-school/"
+        },
+        {
+         "t": "HR Business Support structure for Department Chairs and the Dean’s Office",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Measure and report the success of all action plan activities aligned with the three core impacts: tracking student career outcomes and alumni satisfaction, scholarly influence through top-tier publications and citations, and industry and societal engagement via program competitiveness, revenue growth, and increased external support.",
+       [
+        {
+         "t": "AACSB strategic tracking module deployed",
+         "u": ""
+        },
+        {
+         "t": "Horn tracks startup survival (63% across 104 ventures)",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Foster a culture of in-person engagement by encouraging faculty and staff to utilize on-campus spaces for research discussions, mentoring, and collaborative initiatives.",
+       [
+        {
+         "t": "Annual Lerner leadership retreat",
+         "u": ""
+        },
+        {
+         "t": "Several Coffee with the Deans sessions each semester for faculty and staff to raise concerns",
+         "u": ""
+        },
+        {
+         "t": "Two town halls on the UD Pulse Survey results",
+         "u": ""
+        },
+        {
+         "t": "Collaboration rooms in many academic departments for faculty meetings",
+         "u": ""
+        },
+        {
+         "t": "Lerner Staff Engagement and Recognition Committee runs in-person community service and team-building activities",
+         "u": ""
+        },
+        {
+         "t": "New faculty mentored by experienced faculty",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Invest in Our Own Faculty and Staff for Improved Excellence and Retain Top Performers",
+     "items": [
+      [
+       "p",
+       "Raise funds to establish more endowed chairs and term professorships, and summer support for faculty.",
+       [
+        {
+         "t": "Newly established Edgar S. Woolard Jr. Chair of Corporate Governance, with Fei Xie appointed (September 2026)",
+         "u": "https://www.udel.edu/udaily/2026/september/for-the-record-september-11-2026/"
+        },
+        {
+         "t": "Summer faculty support not reported",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Establish opportunities, including professional development resources, for staff to advance their careers, and training programs to improve job performance.",
+       [
+        {
+         "t": "Comprehensive onboarding materials developed",
+         "u": ""
+        },
+        {
+         "t": "Anyone in Lerner can recognize a staff member through a simple form, and recognitions are featured in the monthly newsletter",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Foster a Culture of Respect, Inclusion and Professional Development",
+     "items": [
+      [
+       "p",
+       "Improve and sustain an inclusive, collaborative environment and culture where Lerner College stakeholders feel valued, supported, and engaged in our mission through meaningful recognition, transparent evaluations, structured dialogue and opportunities for growth.",
+       [
+        {
+         "t": "School Culture Committee formed",
+         "u": ""
+        },
+        {
+         "t": "Monthly newsletter shares events, resources and staff recognitions submitted by anyone in Lerner",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Strengthen and expand inclusive initiatives throughout the Lerner experience, integrating these principles into all our programs, including professional development programs in leadership, technology and industry trends.",
+       [
+        {
+         "t": "Insight Into Diversity “Inspiring Programs” Award",
+         "u": ""
+        },
+        {
+         "t": "Professional Attire Fund awards nearly $20,000 a year to 100+ students",
+         "u": ""
+        },
+        {
+         "t": "Women’s Leadership Summit",
+         "u": ""
+        },
+        {
+         "t": "Outreach partnership with the Wilmington Community Center",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "ai",
+   "kind": "Frontier",
+   "name": "AI Transformative & Technology",
+   "goal": "To elevate our academic programs and scholarship competitiveness through AI and technology integration while driving revenue growth through academic offerings, workshops, certificates, events and external partnerships.",
+   "objectives": [
+    {
+     "t": "Integrate AI and Technology into Academic Programs and Scholarship",
+     "items": [
+      [
+       "a",
+       "Embed AI and Technology into undergraduate and graduate curricula.",
+       [
+        {
+         "t": "MS in Applied AI for Business",
+         "u": ""
+        },
+        {
+         "t": "Applied AI undergraduate minor",
+         "u": ""
+        },
+        {
+         "t": "AI major in the MBA",
+         "u": ""
+        },
+        {
+         "t": "Responsible AI and simulation modules in core courses",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Enhance digital literacy through hands-on workshops and technology-driven learning experiences for faculty and staff.",
+       [
+        {
+         "t": "OpenAI and Anthropic business subscriptions with 40 current users",
+         "u": ""
+        },
+        {
+         "t": "LLM subscriptions for professional development",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Help faculty advance their research at the rapidly developing intersection of AI, technology, business, and economics.",
+       [
+        {
+         "t": "Custom internal AI GPT model for Lerner/UD",
+         "u": ""
+        },
+        {
+         "t": "20 research computing systems managed for faculty",
+         "u": ""
+        },
+        {
+         "t": "Lerner AI Working Group and draft AI framework",
+         "u": ""
+        },
+        {
+         "t": "AI guidelines integrated with university cybersecurity and data protection teams",
+         "u": ""
+        },
+        {
+         "t": "FinTech–PropTech research partnership with Warwick Business School’s Gillmore Centre (November 2025)",
+         "u": "https://lerner.udel.edu/seeing-opportunity/ud-lerner-warwick-establish-fintech-proptech-partnership"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Expand Revenue-Generating Graduate and Non-Degree Program Offerings",
+     "items": [
+      [
+       "a",
+       "Launch industry-responsive graduate programs, co-curricular programs, and certificates in fintech, AI, and advanced analytics.",
+       [
+        {
+         "t": "MS in Applied AI",
+         "u": ""
+        },
+        {
+         "t": "Generative AI for Business Certificate (first graduate)",
+         "u": ""
+        },
+        {
+         "t": "M.A. in Econ Data Analytics",
+         "u": ""
+        },
+        {
+         "t": "FinTech major and minor",
+         "u": ""
+        },
+        {
+         "t": "Expanded 4+1 MBA pathways",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Develop workshops and non-degree programs tailored to workforce upskilling in cutting-edge technologies.",
+       [
+        {
+         "t": "Executive education certificates piloted with about 30 participants",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Partner with industry and government to co-create sponsored projects and training initiatives.",
+       [
+        {
+         "t": "Collaborated with Microsoft and AWS on course module design",
+         "u": ""
+        },
+        {
+         "t": "American Fintech Council funded a faculty project using LLMs to simulate consumer behavior",
+         "u": "https://udel.edu/udaily/2025/april/for-the-record-friday-april-18-2025"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Create Strong Industry Ties Through Tech-Driven Community-Building",
+     "items": [
+      [
+       "p",
+       "Host AI and tech-focused events, such as conferences, showcases, etc., to strengthen ties with industry.",
+       [
+        {
+         "t": "Hosted a global teaching workshop on AI in business education (May 2025)",
+         "u": "https://www.udel.edu/udaily/2025/may/the-lerner-college-hosts-global-teaching-workshop-on-ai"
+        },
+        {
+         "t": "HenHacks and pitch competitions",
+         "u": ""
+        },
+        {
+         "t": "Represented the College with 31 other AACSB schools at the Annual Technology in Business School Roundtable",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Collaborate with regional technology partners to drive impactful industry-facing initiatives and applied research projects and student learning opportunities.",
+       [
+        {
+         "t": "Represented the College in Internet2 AI discussions, the University President’s AI roundtable and First State AI Institute",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Support and expand AI and tech-related innovation hubs, centers and institutes.",
+       [
+        {
+         "t": "Real-time AI trading simulator in the FinTech Lab",
+         "u": ""
+        },
+        {
+         "t": "Bloomberg Lab re-established",
+         "u": ""
+        },
+        {
+         "t": "No-cost API access to frontier AI models for student builders",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "innovation",
+   "kind": "Frontier",
+   "name": "Innovation & Societal Change",
+   "goal": "To enhance student and alumni satisfaction, research funding and philanthropic support by establishing Lerner as an elite catalyst of innovation, fostering entrepreneurial, problem-solving mindsets; and advancing education, venture creation, co-curricular experiences and impactful scholarship to address societal challenges.",
+   "objectives": [
+    {
+     "t": "Establish the School of Innovation & Entrepreneurship in Lerner",
+     "items": [
+      [
+       "a",
+       "Raise external funding to create a dedicated entity to centralize faculty, programs and students associated with innovation initiatives, focusing on venture creation, entrepreneurship and societal impact.",
+       [
+        {
+         "t": "Neil and Sharon Book gift founded the Neil Book School of Innovation & Entrepreneurship, launched July 1, 2026",
+         "u": "https://www.udel.edu/udaily/2026/may/book-school-innovation-entrepreneurship/"
+        },
+        {
+         "t": "Dan Freeman named founding director",
+         "u": "https://www.udel.edu/udaily/2026/july/dan-freeman-director-neil-book-school-innovation-entrepreneurship/"
+        }
+       ]
+      ],
+      [
+       "p",
+       "Partner with industry, government and alumni to drive innovation through research, education, and the development of student-led and UD intellectual property-based ventures.",
+       [
+        {
+         "t": "Summer Founders supported 12 ventures with $36k in grants",
+         "u": ""
+        },
+        {
+         "t": "104 tracked ventures raised $11.8M in follow-on funding",
+         "u": ""
+        },
+        {
+         "t": "Research Advisory Board created for Social Venture and Impact Accelerator programs",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Enhance and elevate the entrepreneurship program to increase its prominence as a leading program in the nation.",
+       [
+        {
+         "t": "Undergraduate entrepreneurship ranked Top 25 nationally and #3 in the Mid-Atlantic (2026 Princeton Review and Entrepreneur)",
+         "u": "https://www.udel.edu/udaily/2026/july/dan-freeman-director-neil-book-school-innovation-entrepreneurship/"
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Foster Entrepreneurial and Creative Student Skills & Mindsets",
+     "items": [
+      [
+       "p",
+       "Expand co-curricular programs like Hen Hatch and the Venture Development Center to engage students in real-world problem-solving.",
+       [
+        {
+         "t": "VDC Annex development plans approved",
+         "u": ""
+        },
+        {
+         "t": "HenHacks, pitch competitions and Summer Founders",
+         "u": ""
+        },
+        {
+         "t": "Student-powered retail store (“Blue Hen Made”) conceptualized",
+         "u": ""
+        },
+        {
+         "t": "Hen Hatch continues with $50,000 in prizes; 2026 finals on December 3",
+         "u": "https://www.udel.edu/research-innovation/horn/venture-support/hen-hatch/"
+        }
+       ]
+      ],
+      [
+       "a",
+       "Leverage Horn Entrepreneurship to provide mentorship, interdisciplinary collaboration and innovation training for students.",
+       [
+        {
+         "t": "Pro-bono student consulting scaled",
+         "u": ""
+        },
+        {
+         "t": "Executive in Residence program for mentoring and guest lectures",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Embed innovation and entrepreneurial learning opportunities into undergraduate and graduate programs.",
+       [
+        {
+         "t": "Interdisciplinary minors in Sustainability and in Entrepreneurship & Real Estate",
+         "u": ""
+        },
+        {
+         "t": "Experiential projects from the first semester",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Advance Innovation-Driven Scholarship and Partnerships",
+     "items": [
+      [
+       "a",
+       "Promote translational and theoretical research that addresses pressing societal challenges and fosters industry and government-funded collaborations.",
+       [
+        {
+         "t": "Research Translation pilot",
+         "u": ""
+        },
+        {
+         "t": "About 3 interdisciplinary grants ($3.4M) with Nursing, Engineering and Health",
+         "u": ""
+        },
+        {
+         "t": "Templeton grant for EARTH Institute",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Support faculty and student engagement in policy-oriented and innovation-focused conferences, workshops and publications.",
+       [
+        {
+         "t": "Annual Economic Forecast conference convened regional and national leaders, with partners including the Federal Reserve Bank of Philadelphia",
+         "u": ""
+        },
+        {
+         "t": "Weinberg Corporate Governance Symposium hosted",
+         "u": ""
+        },
+        {
+         "t": "CEEE published research, model lessons and the fifth edition of Keys to Financial Success",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  },
+  {
+   "id": "leadership",
+   "kind": "Frontier",
+   "name": "Leadership & Organizations",
+   "goal": "To drive premier scholarly contributions and student satisfaction by advancing leadership and organization research and education. Through innovative scholarship, transformative executive programs and strategic board-level collaborations, the Lerner College will empower students, faculty and business leaders to address complex challenges, foster leadership mindsets and shape the future of organizations and society.",
+   "objectives": [
+    {
+     "t": "Enhance Leadership and Organizations Research",
+     "items": [
+      [
+       "p",
+       "Fund impactful faculty research on leadership, management, reporting and corporate governance through seed grants and sponsored partnerships.",
+       [
+        {
+         "t": "New Woolard Chair supports corporate governance teaching and research",
+         "u": "https://www.udel.edu/udaily/2026/september/for-the-record-september-11-2026/"
+        },
+        {
+         "t": "Inaugural Faculty Research Director named at the Weinberg Center",
+         "u": ""
+        },
+        {
+         "t": "30+ internal research grants across the college",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Establish and leverage centers and institutes to increase the visibility of research via annual showcases and marketing faculty publications.",
+       [
+        {
+         "t": "Siegfried Institute for leadership and free enterprise launched",
+         "u": ""
+        },
+        {
+         "t": "25th Anniversary Weinberg Corporate Governance Symposium",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Increase top-tier journal publications, citations, media coverage and policy adoption in leadership, organization and corporate governance.",
+       [
+        {
+         "t": "Published in Academy of Management Journal and Review",
+         "u": ""
+        },
+        {
+         "t": "Thinkers50, Highly Cited Researcher and AOM Decade Award recognition (Dr. Wendy Smith)",
+         "u": ""
+        },
+        {
+         "t": "Editor and editorial board roles at FT50 journals",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Develop Transformative Leadership Education",
+     "items": [
+      [
+       "p",
+       "Expand executive and continuing education programs targeting leadership and corporate governance.",
+       [
+        {
+         "t": "Corporate governance education delivered to the Board of Trustees",
+         "u": ""
+        },
+        {
+         "t": "Executive education certificates piloted with about 30 participants",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "p",
+       "Integrate leadership case studies, board-level simulations and decision-making exercises into Lerner programs.",
+       [
+        {
+         "t": "Leadership & Ethics Case Competition launched in 2024",
+         "u": ""
+        },
+        {
+         "t": "Simulation modules added to core courses",
+         "u": ""
+        }
+       ]
+      ],
+      [
+       "a",
+       "Promote leadership skill development through advising, career services and academic programs.",
+       [
+        {
+         "t": "Leadership Certificate integrated into student organization governance",
+         "u": ""
+        },
+        {
+         "t": "Career Lab and mentoring programs",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    },
+    {
+     "t": "Strengthen Industry and Academic Collaborations",
+     "items": [
+      [
+       "a",
+       "Host business and economic leadership summits, workshops, and board-level conferences in partnership with industry organizations.",
+       [
+        {
+         "t": "25th Weinberg Corporate Governance Symposium",
+         "u": ""
+        },
+        {
+         "t": "Women’s Leadership Summit",
+         "u": ""
+        },
+        {
+         "t": "Annual Economic Forecast conference",
+         "u": ""
+        },
+        {
+         "t": "Delaware Women’s Hall of Fame “Lessons in Leadership” speaker series launched at Lerner (March 2025)",
+         "u": "https://lerner.udel.edu/seeing-opportunity/lerner-colleges-top-stories-of-2025"
+        }
+       ]
+      ],
+      [
+       "p",
+       "Offer mentorship and experiential learning opportunities, such as board shadowing and consulting projects with alumni and board members.",
+       [
+        {
+         "t": "Executive Mentoring and Job Shadow programs running",
+         "u": ""
+        },
+        {
+         "t": "Pro-bono student consulting scaled",
+         "u": ""
+        },
+        {
+         "t": "Board shadowing not reported",
+         "u": ""
+        }
+       ]
+      ]
+     ]
+    }
+   ]
+  }
+ ]
+}</script>
+<script>
+const DATA=JSON.parse(document.getElementById("plan-data").textContent);
+const TEMPLATE="<!doctype html>\n"+document.documentElement.outerHTML;
+const PILLARS=DATA.pillars;
+const LABEL={a:"Achieved",p:"In progress",n:"Not yet reported"};
+const ORDER=["a","p","n"];
+const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+const swatch=s=>`<i class="sw blk ${s}" style="height:11px"></i>`;
+function counts(items){const c={a:0,p:0,n:0};items.forEach(i=>c[i[0]]++);return c}
+function allItems(p){return p.objectives.flatMap(o=>o.items)}
+function blocks(c,total){const b=el("div","blocks");b.style.gridTemplateColumns=`repeat(${Math.max(total,1)},minmax(0,1fr))`;ORDER.forEach(s=>{for(let i=0;i<c[s];i++)b.appendChild(el("div","blk "+s))});b.setAttribute("role","img");b.setAttribute("aria-label",`${c.a} achieved, ${c.p} in progress, ${c.n} not yet reported`);return b}
+const validUrl=u=>/^https?:\/\/\S+$/.test((u||"").trim());
+
+let current=null, filter="all", editing=false, dirty=false;
+
+function fmtAsOf(iso){const m=/^(\d{4})-(\d{2})-(\d{2})$/.exec(iso||"");if(!m)return iso||"";return new Date(+m[1],+m[2]-1,+m[3]).toLocaleDateString("en-US",{month:"long",day:"numeric",year:"numeric"})}
+function renderAsOf(){document.getElementById("asof").textContent="Snapshot as of "+fmtAsOf(DATA.asOf)}
+
+// Overview and pillar cards
+const cards={};
+function renderSummary(){
+  const every=PILLARS.flatMap(allItems), tot=counts(every);
+  document.getElementById("ovNum").innerHTML=`${tot.a} <span>of ${every.length}</span>`;
+  document.getElementById("ovSub").textContent=`${tot.p} more are in progress. ${tot.n} ${tot.n===1?"has":"have"} no reported progress yet.`;
+  document.getElementById("ovBlocks").replaceWith(Object.assign(blocks(tot,every.length),{id:"ovBlocks"}));
+  document.getElementById("ovLegend").innerHTML=ORDER.map(s=>`<span>${swatch(s)}${LABEL[s]} <b>${tot[s]}</b></span>`).join("");
+  const gF=document.getElementById("gridF"),gR=document.getElementById("gridR");gF.innerHTML="";gR.innerHTML="";
+  PILLARS.forEach(p=>{
+    const it=allItems(p),c=counts(it);
+    const b=el("button","card");b.type="button";b.setAttribute("aria-pressed",String(p.id===current));b.setAttribute("aria-controls","detail");
+    b.innerHTML=`<h3>${esc(p.name)}</h3><div class="cnt"><strong>${c.a} of ${it.length}</strong><small>achieved</small></div>`;
+    b.appendChild(blocks(c,it.length));
+    b.appendChild(el("div","foot",`${c.p} in progress · ${c.n} not yet reported`));
+    b.addEventListener("click",()=>select(p.id,true));
+    cards[p.id]=b;
+    (p.kind==="Foundation"?gF:gR).appendChild(b);
+  });
+}
+
+function changed(summary){dirty=true;setEditMsg();if(summary)renderSummary()}
+
+// Detail
+function renderDetail(focusSel){
+  const p=PILLARS.find(x=>x.id===current), it=allItems(p), c=counts(it), d=document.getElementById("detail");
+  d.innerHTML="";
+  const h=el("div","detail-head");
+  h.innerHTML=`<div class="eyebrow">${p.kind} · ${c.a} of ${it.length} achieved</div><h2>${esc(p.name)}</h2><p class="goal">${esc(p.goal)}</p>`;
+  d.appendChild(h);
+  if(!editing){
+    const tb=el("div","toolbar");tb.setAttribute("role","group");tb.setAttribute("aria-label","Filter by status");
+    [["all","All",it.length],...ORDER.map(s=>[s,LABEL[s],c[s]])].forEach(([k,l,n])=>{
+      const ch=el("button","chip",(k==="all"?"":swatch(k))+`${l} <span style="opacity:.7">${n}</span>`);ch.type="button";
+      ch.setAttribute("aria-pressed",String(filter===k));ch.addEventListener("click",()=>{filter=k;renderDetail()});tb.appendChild(ch)});
+    d.appendChild(tb);
+  }
+  p.objectives.forEach((o,oi)=>{
+    const rows=editing?o.items:o.items.filter(i=>filter==="all"||i[0]===filter);
+    const s=el("div","objective");s.appendChild(el("h3",null,esc(o.t)));
+    if(!rows.length&&!editing){s.appendChild(el("div","empty",`No ${LABEL[filter].toLowerCase()} items under this objective.`))}
+    if(rows.length)s.appendChild(el("div","row th","<div>Status</div><div>Action item</div><div>Progress highlights</div>"));
+    rows.forEach(item=>{
+      const ii=o.items.indexOf(item), r=el("div","row");
+      if(editing){
+        // Status
+        const sc=el("div");const sel=document.createElement("select");sel.className="ed";sel.setAttribute("aria-label","Status");
+        ORDER.forEach(k=>sel.appendChild(new Option(LABEL[k],k)));sel.value=item[0];
+        sel.addEventListener("change",()=>{item[0]=sel.value;changed(true);renderDetail(`[data-k="s-${oi}-${ii}"]`)});
+        sel.dataset.k=`s-${oi}-${ii}`;sc.appendChild(sel);r.appendChild(sc);
+        // Action item
+        const ac=el("div","action");const ta=document.createElement("textarea");ta.className="ed";ta.rows=3;ta.value=item[1];ta.setAttribute("aria-label","Action item");ta.dataset.k=`a-${oi}-${ii}`;
+        ta.addEventListener("input",()=>{item[1]=ta.value;changed(false)});ac.appendChild(ta);
+        const del=el("button","linkbtn danger","Delete action item");del.type="button";
+        del.addEventListener("click",()=>{if(confirm("Delete this action item and its highlights?")){o.items.splice(ii,1);changed(true);renderDetail()}});
+        ac.appendChild(del);r.appendChild(ac);
+        // Highlights
+        const hc=el("div","hl-edit");
+        item[2].forEach((x,hi)=>{
+          const box=el("div","hl-row");
+          const t=document.createElement("textarea");t.className="ed";t.rows=2;t.value=x.t;t.placeholder="What happened";t.setAttribute("aria-label","Highlight");t.dataset.k=`h-${oi}-${ii}-${hi}`;
+          t.addEventListener("input",()=>{x.t=t.value;changed(false)});
+          const u=document.createElement("input");u.className="ed";u.type="url";u.value=x.u;u.placeholder="Source link (optional), https://…";u.setAttribute("aria-label","Source link");
+          const warn=el("div","warn");const chk=()=>{warn.textContent=u.value.trim()&&!validUrl(u.value)?"Links need to start with https:// to show on the page.":""};chk();
+          u.addEventListener("input",()=>{x.u=u.value.trim();chk();changed(false)});
+          const rm=el("button","linkbtn danger","Remove");rm.type="button";rm.setAttribute("aria-label","Remove highlight");
+          rm.addEventListener("click",()=>{item[2].splice(hi,1);changed(false);renderDetail()});
+          box.append(t,u,warn,rm);hc.appendChild(box);
+        });
+        const add=el("button","linkbtn","+ Add highlight");add.type="button";
+        add.addEventListener("click",()=>{item[2].push({t:"",u:""});changed(false);renderDetail(`[data-k="h-${oi}-${ii}-${item[2].length-1}"]`)});
+        hc.appendChild(add);r.appendChild(hc);
+      }else{
+        const hl=item[2].filter(x=>x.t.trim());
+        r.appendChild(el("div",null,`<span class="status">${swatch(item[0])}${LABEL[item[0]]}</span>`));
+        r.appendChild(el("div","action",esc(item[1])));
+        r.appendChild(hl.length?el("ul","hl",hl.map(x=>`<li>${esc(x.t)}${validUrl(x.u)?` <a class="src" href="${esc(x.u.trim())}" target="_blank" rel="noopener">Source</a>`:""}</li>`).join("")):el("ul","hl none","<li>No progress reported yet.</li>"));
+      }
+      s.appendChild(r);
+    });
+    if(editing){
+      const add=el("button","linkbtn addrow","+ Add action item");add.type="button";
+      add.addEventListener("click",()=>{o.items.push(["n","",[]]);changed(true);renderDetail(`[data-k="a-${oi}-${o.items.length-1}"]`)});
+      s.appendChild(add);
+    }
+    d.appendChild(s);
+  });
+  if(focusSel){const f=d.querySelector(focusSel);if(f)f.focus()}
+}
+
+function select(id,scroll){
+  if(!PILLARS.some(p=>p.id===id))id=PILLARS[0].id;
+  if(id!==current)filter="all";
+  current=id;
+  Object.entries(cards).forEach(([k,b])=>b.setAttribute("aria-pressed",String(k===id)));
+  renderDetail();
+  if(location.hash!=="#"+id)history.replaceState(null,"","#"+id);
+  if(scroll)document.getElementById("detail").scrollIntoView({behavior:matchMedia("(prefers-reduced-motion: reduce)").matches?"auto":"smooth",block:"start"});
+}
+window.addEventListener("hashchange",()=>select(location.hash.slice(1),false));
+
+// Edit mode
+const canEdit=location.protocol==="file:"||new URLSearchParams(location.search).has("edit");
+const bar=document.getElementById("editbar"),editBtn=document.getElementById("editBtn"),asofIn=document.getElementById("asofIn"),editMsg=document.getElementById("editMsg");
+function setEditMsg(t){editMsg.textContent=t||(dirty?"Unsaved changes. Use “Save a copy” to keep them.":"No changes yet.")}
+function setEditing(on){
+  editing=on;bar.hidden=!on;editBtn.hidden=on||!canEdit;document.body.classList.toggle("editing",on);
+  if(on){asofIn.value=DATA.asOf||"";setEditMsg()}
+  renderDetail();
+}
+editBtn.addEventListener("click",()=>{setEditing(true);document.getElementById("detail").scrollIntoView({block:"start"})});
+document.getElementById("doneBtn").addEventListener("click",()=>setEditing(false));
+asofIn.addEventListener("change",()=>{if(asofIn.value){DATA.asOf=asofIn.value;renderAsOf();changed(false)}});
+document.getElementById("saveBtn").addEventListener("click",()=>{
+  const json=JSON.stringify(DATA,null,1).replace(/</g,"\\u003c");
+  const out=TEMPLATE.replace(/(<script type="application\/json" id="plan-data">)[\s\S]*?(<\/script>)/,(m,a,b)=>a+json+b);
+  const blob=new Blob([out],{type:"text/html"});
+  const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=`index.html`;
+  document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1500);
+  dirty=false;setEditMsg("Saved as index.html in your Downloads folder. Upload it to your site to publish the changes.");
+});
+window.addEventListener("beforeunload",e=>{if(dirty){e.preventDefault();e.returnValue=""}});
+
+editBtn.hidden=!canEdit;document.getElementById("editNote").hidden=!canEdit;
+renderAsOf();
+renderSummary();
+select(location.hash.slice(1)||PILLARS[0].id,false);
+</script>
+
+</body></html>
