@@ -87,9 +87,9 @@ main.wrap{padding-block:20px 40px;display:flex;flex-direction:column;gap:24px}
 .action{font-weight:600;font-size:13.5px}
 .hl{margin:0;padding:10px 14px 10px 28px;background:var(--hl-bg);border-radius:6px;font-size:12.5px;display:flex;flex-direction:column;gap:5px}
 .hl.none{list-style:none;padding-left:14px;background:var(--hl-none);border:1px solid var(--line);font-style:italic;color:var(--muted)}
-.hl a.src{font-size:11px;font-weight:700;color:var(--achieved);text-decoration:none;white-space:nowrap}
+
 .hl a.src:hover{text-decoration:underline}
-.hl a.src:focus-visible{outline:2px solid var(--achieved);outline-offset:1px}
+
 .empty{color:var(--muted);padding:14px 0;font-style:italic}
 .form{margin-top:14px}
 .fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 16px}
@@ -173,7 +173,7 @@ body.editing .card{cursor:pointer}
 <main class="wrap">
   <section class="panel" aria-labelledby="ov">
     <div class="label" id="ov">Across all six pillars</div>
-    <div class="big"><div class="n" id="ovNum"></div><div class="t">action items achieved</div></div>
+    <div class="big"><div class="n" id="ovNum"></div><div class="t">action items achieving</div></div>
     <p class="sub" id="ovSub"></p>
     <div class="blocks" id="ovBlocks"></div>
     <div class="legend" id="ovLegend"></div>
@@ -197,15 +197,15 @@ body.editing .card{cursor:pointer}
         <label>Type of update<select id="f-type"><option value="add">New progress to add</option><option value="edit">Correct existing highlights</option></select></label>
         <label>Pillar<select id="f-pillar"></select></label>
         <label class="wide">Action item<select id="f-item"></select></label>
-        <label>Suggested status<select id="f-status"><option value="">No change</option><option value="a">Achieved</option><option value="p">In progress</option><option value="n">Not yet reported</option></select></label>
-        <label>Source link (optional)<input id="f-src" type="url" placeholder="https://…"></label>
+        <label>Suggested status<select id="f-status"><option value="">No change</option><option value="a">Achieving</option><option value="p">In progress</option><option value="n">Not yet reported</option></select></label>
         <label class="wide"><span id="f-hl-lbl">What happened</span><textarea id="f-hl" rows="4"></textarea></label>
         <label>Your name<input id="f-name" autocomplete="name"></label>
         <label>Anything else (optional)<input id="f-note"></label>
       </div>
-      <div class="factions"><button class="btn" type="submit">Send by email</button><span id="f-msg" class="fmsg" aria-live="polite"></span></div>
+      <input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <div class="factions"><button class="btn" type="submit" id="f-send">Send update</button><span id="f-msg" class="fmsg" aria-live="polite"></span></div>
       <div id="f-fallback" class="fallback" hidden>
-        <p class="fmsg">If your email app didn’t open, copy the text below and email it to <a id="f-mailto" href="#"></a>.</p>
+        <p class="fmsg">The update couldn’t be sent from the page. Copy the text below and email it to <a id="f-mailto" href="#"></a>.</p>
         <textarea id="f-copy" class="ed" rows="9" readonly aria-label="Update text to copy"></textarea>
         <button type="button" class="linkbtn" id="f-copybtn">Copy text</button>
       </div>
@@ -232,16 +232,13 @@ body.editing .card{cursor:pointer}
        "Enhance assurance of learning, rigor and fundamental competencies in all our academic programs.",
        [
         {
-         "t": "AACSB accreditation extension maintained",
-         "u": ""
+         "t": "AACSB accreditation extension maintained"
         },
         {
-         "t": "100/100 faculty credential teaching score for three consecutive years (2023–2025)",
-         "u": ""
+         "t": "100/100 faculty credential teaching score for three consecutive years (2023–2025)"
         },
         {
-         "t": "AACSB strategic tracking module deployed",
-         "u": ""
+         "t": "AACSB strategic tracking module deployed"
         }
        ]
       ],
@@ -250,32 +247,25 @@ body.editing .card{cursor:pointer}
        "Improve the relevance and competitiveness of our academic programs through expanding and strengthening advisory boards and industry connections.",
        [
         {
-         "t": "Ranked #52 nationally for undergraduate business by Poets & Quants, up 13 spots and named “10 to Watch”",
-         "u": ""
+         "t": "Ranked #52 nationally for undergraduate business by Poets & Quants, up 13 spots and named “10 to Watch”"
         },
         {
-         "t": "#26 of 377 Best Online MBA Programs (U.S. News & World Report, 2026)",
-         "u": ""
+         "t": "#26 of 377 Best Online MBA Programs (U.S. News & World Report, 2026)"
         },
         {
-         "t": "Named one of Poets&Quants’ 10 Business Schools to Watch of 2026",
-         "u": "https://lerner.udel.edu/seeing-opportunity/lerner-listed-among-pq-10-business-schools-to-watch-of-2026"
+         "t": "Named one of Poets&Quants’ 10 Business Schools to Watch of 2026"
         },
         {
-         "t": "Expanded the Lerner Business Advisory Board",
-         "u": ""
+         "t": "Expanded the Lerner Business Advisory Board"
         },
         {
-         "t": "Collaborated with Microsoft and AWS on course module design",
-         "u": ""
+         "t": "Collaborated with Microsoft and AWS on course module design"
         },
         {
-         "t": "SHRM partnership for undergraduate HR certification pathways",
-         "u": ""
+         "t": "SHRM partnership for undergraduate HR certification pathways"
         },
         {
-         "t": "Pilot framework for college-wide corporate engagement",
-         "u": ""
+         "t": "Pilot framework for college-wide corporate engagement"
         }
        ]
       ],
@@ -284,16 +274,13 @@ body.editing .card{cursor:pointer}
        "Weave the three Lerner Frontiers—AI Transformation & Technology, Innovation and Societal Change, and Leadership & Organizations—appropriately throughout the business and economics curricula to ensure seamless integration into the educational experience.",
        [
         {
-         "t": "Responsible AI and simulation modules in core courses",
-         "u": ""
+         "t": "Responsible AI and simulation modules in core courses"
         },
         {
-         "t": "Entrepreneurship minors",
-         "u": ""
+         "t": "Entrepreneurship minors"
         },
         {
-         "t": "Leadership Certificate tied to student organization governance",
-         "u": ""
+         "t": "Leadership Certificate tied to student organization governance"
         }
        ]
       ],
@@ -302,28 +289,22 @@ body.editing .card{cursor:pointer}
        "Continuously review all our academic programs to identify new opportunities to enrich our program portfolio and phase out those that are out-of-date or not aligned with our strategic priorities.",
        [
         {
-         "t": "Reorganized from 5 to 6 departments and a school, including a new BAOT department",
-         "u": ""
+         "t": "Reorganized from 5 to 6 departments and a school, including a new BAOT department"
         },
         {
-         "t": "Launched FinTech, HR Management and AI programs",
-         "u": ""
+         "t": "Launched FinTech, HR Management and AI programs"
         },
         {
-         "t": "Redesigned the marketing B.S. with customer strategy and sales leadership concentrations",
-         "u": ""
+         "t": "Redesigned the marketing B.S. with customer strategy and sales leadership concentrations"
         },
         {
-         "t": "Established STEM certificate and study pathways",
-         "u": ""
+         "t": "Established STEM certificate and study pathways"
         },
         {
-         "t": "Exploring pharmaco-economics degree pathways",
-         "u": ""
+         "t": "Exploring pharmaco-economics degree pathways"
         },
         {
-         "t": "Phase-outs not reported",
-         "u": ""
+         "t": "Phase-outs not reported"
         }
        ]
       ]
@@ -337,12 +318,10 @@ body.editing .card{cursor:pointer}
        "Unify all academic support services into one comprehensive center to magnify the impact of career services, advising, and UDREAM on students’ current and future success.",
        [
         {
-         "t": "Siegfried Hall plans include a Student Success and Excellence Center for advising and career services",
-         "u": "https://www.udel.edu/udaily/2025/march/robert-kathleen-siegfried-historic-gift-lerner-college/"
+         "t": "Siegfried Hall plans include a Student Success and Excellence Center for advising and career services"
         },
         {
-         "t": "Siegfried Hall is still in planning",
-         "u": ""
+         "t": "Siegfried Hall is still in planning"
         }
        ]
       ],
@@ -351,16 +330,13 @@ body.editing .card{cursor:pointer}
        "Augment and strengthen our alumni and industry mentoring networks to create more mentoring opportunities with students.",
        [
         {
-         "t": "1:1 Executive Mentoring pairs about 700 students a year",
-         "u": ""
+         "t": "1:1 Executive Mentoring pairs about 700 students a year"
         },
         {
-         "t": "Lerner Edge reaches 700+ students",
-         "u": ""
+         "t": "Lerner Edge reaches 700+ students"
         },
         {
-         "t": "Executive in Residence program created",
-         "u": ""
+         "t": "Executive in Residence program created"
         }
        ]
       ],
@@ -369,16 +345,13 @@ body.editing .card{cursor:pointer}
        "Expand alumni and industry outreach to generate more internships, co-ops and career opportunities for Lerner students.",
        [
         {
-         "t": "95% placement rate and $70,000 average starting salary",
-         "u": "https://poetsandquants.com/2025/08/14/inside-the-120-million-plan-to-transform-delawares-lerner-college/"
+         "t": "95% placement rate and $70,000 average starting salary"
         },
         {
-         "t": "Lerner Co-op delivered 60+ paid placements in under two years",
-         "u": ""
+         "t": "Lerner Co-op delivered 60+ paid placements in under two years"
         },
         {
-         "t": "Job Shadow Program hosted 30+ experiences in its pilot year",
-         "u": ""
+         "t": "Job Shadow Program hosted 30+ experiences in its pilot year"
         }
        ]
       ]
@@ -392,12 +365,10 @@ body.editing .card{cursor:pointer}
        "Expand partnerships with undergraduate institutions, industry organizations and international universities to attract a diverse and talented pool of prospective graduate students.",
        [
         {
-         "t": "30+ 4+1 programs launched, including interdisciplinary pairings",
-         "u": ""
+         "t": "30+ 4+1 programs launched, including interdisciplinary pairings"
         },
         {
-         "t": "MAEEE has 540+ graduates from 39 states and 15 countries",
-         "u": ""
+         "t": "MAEEE has 540+ graduates from 39 states and 15 countries"
         }
        ]
       ],
@@ -406,32 +377,25 @@ body.editing .card{cursor:pointer}
        "Enhance K-12 outreach and expand partnerships with high schools, community colleges and international organizations to position the Lerner College as a top choice for aspiring business and economics students while attracting a diverse and talented undergraduate student body.",
        [
         {
-         "t": "CEEE delivered 111 programs reaching 2,291 educators and 9,079 students",
-         "u": ""
+         "t": "CEEE delivered 111 programs reaching 2,291 educators and 9,079 students"
         },
         {
-         "t": "Bank At School in 42 schools, giving 22,347 students savings access through 25 banks and credit unions",
-         "u": ""
+         "t": "Bank At School in 42 schools, giving 22,347 students savings access through 25 banks and credit unions"
         },
         {
-         "t": "Led statewide support for Delaware’s HB 203 financial literacy graduation requirement",
-         "u": ""
+         "t": "Led statewide support for Delaware’s HB 203 financial literacy graduation requirement"
         },
         {
-         "t": "Robinhood Grant for Youth Financial Literacy",
-         "u": ""
+         "t": "Robinhood Grant for Youth Financial Literacy"
         },
         {
-         "t": "ME* Competition engaged nearly 500 elementary students",
-         "u": ""
+         "t": "ME* Competition engaged nearly 500 elementary students"
         },
         {
-         "t": "Delaware students placed second nationally in the Personal Finance Challenge",
-         "u": ""
+         "t": "Delaware students placed second nationally in the Personal Finance Challenge"
         },
         {
-         "t": "CEEE received the Albert Beekhuis Center of Excellence Award",
-         "u": ""
+         "t": "CEEE received the Albert Beekhuis Center of Excellence Award"
         }
        ]
       ]
@@ -445,16 +409,13 @@ body.editing .card{cursor:pointer}
        "Increase learning activities, industry networking, and recognition associated with meaningful student club and co-curricular involvement/creation.",
        [
         {
-         "t": "Advisors and mentorship for 30+ student-led organizations",
-         "u": ""
+         "t": "Advisors and mentorship for 30+ student-led organizations"
         },
         {
-         "t": "Blue Hen Investment Club and Financial Planning Center scaled",
-         "u": ""
+         "t": "Blue Hen Investment Club and Financial Planning Center scaled"
         },
         {
-         "t": "Leadership & Ethics Case Competition launched in 2024",
-         "u": ""
+         "t": "Leadership & Ethics Case Competition launched in 2024"
         }
        ]
       ],
@@ -463,20 +424,16 @@ body.editing .card{cursor:pointer}
        "Create meaningful high-impact experiential learning experiences with industry in curricular and extracurricular spaces.",
        [
         {
-         "t": "Co-op and Job Shadow programs",
-         "u": ""
+         "t": "Co-op and Job Shadow programs"
         },
         {
-         "t": "Career Lab with Forage job simulations",
-         "u": ""
+         "t": "Career Lab with Forage job simulations"
         },
         {
-         "t": "Global business capstones",
-         "u": ""
+         "t": "Global business capstones"
         },
         {
-         "t": "Experiential projects from the first semester",
-         "u": ""
+         "t": "Experiential projects from the first semester"
         }
        ]
       ]
@@ -498,32 +455,25 @@ body.editing .card{cursor:pointer}
        "Increase funding for faculty research and access to essential databases and other sources.",
        [
         {
-         "t": "30+ internal research grants",
-         "u": ""
+         "t": "30+ internal research grants"
         },
         {
-         "t": "Research assistant and postdoc support",
-         "u": ""
+         "t": "Research assistant and postdoc support"
         },
         {
-         "t": "LLM subscriptions",
-         "u": ""
+         "t": "LLM subscriptions"
         },
         {
-         "t": "Streamlined funding workflows",
-         "u": ""
+         "t": "Streamlined funding workflows"
         },
         {
-         "t": "53 publications in FT50, UTD24 and Department-A ranked journals since 2024",
-         "u": ""
+         "t": "53 publications in FT50, UTD24 and Department-A ranked journals since 2024"
         },
         {
-         "t": "Output includes Management Science, Marketing Science, AMJ and AMR",
-         "u": ""
+         "t": "Output includes Management Science, Marketing Science, AMJ and AMR"
         },
         {
-         "t": "Secure computing environments for 9 data use agreements on controlled data",
-         "u": ""
+         "t": "Secure computing environments for 9 data use agreements on controlled data"
         }
        ]
       ],
@@ -532,16 +482,13 @@ body.editing .card{cursor:pointer}
        "Assist with securing external grants and continue to expand Lerner Faculty Research Grants.",
        [
         {
-         "t": "Templeton Foundation grant for EARTH Institute expansion",
-         "u": ""
+         "t": "Templeton Foundation grant for EARTH Institute expansion"
         },
         {
-         "t": "About 3 interdisciplinary grants totaling $3.4M",
-         "u": ""
+         "t": "About 3 interdisciplinary grants totaling $3.4M"
         },
         {
-         "t": "Sieg-Character Lab mini-grants launched",
-         "u": ""
+         "t": "Sieg-Character Lab mini-grants launched"
         }
        ]
       ],
@@ -550,16 +497,13 @@ body.editing .card{cursor:pointer}
        "Provide marketing and recognition support for top-tier publications.",
        [
         {
-         "t": "UDaily feature on a management faculty review in Academy of Management Annals (May 2026)",
-         "u": "https://www.udel.edu/udaily/2026/may/greed-research-lerner-management-professors/"
+         "t": "UDaily feature on a management faculty review in Academy of Management Annals (May 2026)"
         },
         {
-         "t": "UDaily feature on Beth Schinoff’s chronic pain research (May 2026)",
-         "u": "https://www.udel.edu/udaily/2026/may/beth-schinoff-chronic-pain-research/"
+         "t": "UDaily feature on Beth Schinoff’s chronic pain research (May 2026)"
         },
         {
-         "t": "No formal publication recognition program found",
-         "u": ""
+         "t": "No formal publication recognition program found"
         }
        ]
       ]
@@ -573,20 +517,16 @@ body.editing .card{cursor:pointer}
        "Host, expand and encourage participation in research activities to promote collaboration and continuous learning (e.g. “lunch & learn”, external seminars and conferences).",
        [
         {
-         "t": "Management Research Summit drew 18+ Mid-Atlantic schools in March 2025, its largest yet",
-         "u": "https://lerner.udel.edu/seeing-opportunity/lerner-hosts-annual-management-research-summit/"
+         "t": "Management Research Summit drew 18+ Mid-Atlantic schools in March 2025, its largest yet"
         },
         {
-         "t": "FinTech & Financial Institutions Research Conference co-hosted with the Philadelphia Fed (April 2026)",
-         "u": "https://www.philadelphiafed.org/calendar-of-events/2026-fintech-and-financial-institutions-research-conference"
+         "t": "FinTech & Financial Institutions Research Conference co-hosted with the Philadelphia Fed (April 2026)"
         },
         {
-         "t": "IRRCi corporate governance research symposium with ECGI (March 2025)",
-         "u": "https://udel.edu/udaily/2025/april/for-the-record-friday-april-18-2025"
+         "t": "IRRCi corporate governance research symposium with ECGI (March 2025)"
         },
         {
-         "t": "Global teaching workshop on AI drew nearly 200 educators from 140+ universities (May 2025)",
-         "u": "https://www.udel.edu/udaily/2025/may/the-lerner-college-hosts-global-teaching-workshop-on-ai"
+         "t": "Global teaching workshop on AI drew nearly 200 educators from 140+ universities (May 2025)"
         }
        ]
       ],
@@ -595,12 +535,10 @@ body.editing .card{cursor:pointer}
        "Organize research clusters around the Lerner Frontiers to encourage interdisciplinary research and learning.",
        [
         {
-         "t": "Interdisciplinary teams formed on public health and sustainability",
-         "u": ""
+         "t": "Interdisciplinary teams formed on public health and sustainability"
         },
         {
-         "t": "Research Translation pilot launched",
-         "u": ""
+         "t": "Research Translation pilot launched"
         }
        ]
       ],
@@ -609,12 +547,10 @@ body.editing .card{cursor:pointer}
        "Foster and/or strengthen mentoring relationships for new faculty and graduate students.",
        [
         {
-         "t": "Graduate Student Research & Travel Support Grants Program established",
-         "u": ""
+         "t": "Graduate Student Research & Travel Support Grants Program established"
         },
         {
-         "t": "Research computing environments built for 14 PhD and Master’s projects",
-         "u": ""
+         "t": "Research computing environments built for 14 PhD and Master’s projects"
         }
        ]
       ],
@@ -623,24 +559,19 @@ body.editing .card{cursor:pointer}
        "Recognize research excellence for quality and productivity.",
        [
         {
-         "t": "Professor Fei Xie named inaugural Faculty Research Director at the Weinberg Center",
-         "u": ""
+         "t": "Professor Fei Xie named inaugural Faculty Research Director at the Weinberg Center"
         },
         {
-         "t": "National honors including Thinkers50, Highly Cited Researcher, a Fulbright, the AOM Decade Award, a JMR long-term impact award and the O’Neill Multiplier Award",
-         "u": ""
+         "t": "National honors including Thinkers50, Highly Cited Researcher, a Fulbright, the AOM Decade Award, a JMR long-term impact award and the O’Neill Multiplier Award"
         },
         {
-         "t": "Poets&Quants Top 50 Undergraduate Business Professors (Dr. Julia Bayuk, Dr. Stephanie Raible)",
-         "u": ""
+         "t": "Poets&Quants Top 50 Undergraduate Business Professors (Dr. Julia Bayuk, Dr. Stephanie Raible)"
         },
         {
-         "t": "Editorial board roles at FT50 journals",
-         "u": ""
+         "t": "Editorial board roles at FT50 journals"
         },
         {
-         "t": "Faculty leadership roles in DSI, SMA, AOM and INFORMS",
-         "u": ""
+         "t": "Faculty leadership roles in DSI, SMA, AOM and INFORMS"
         }
        ]
       ]
@@ -654,12 +585,10 @@ body.editing .card{cursor:pointer}
        "Fund participation in prestigious conferences for presenting research.",
        [
         {
-         "t": "Graduate student travel grants launched",
-         "u": ""
+         "t": "Graduate student travel grants launched"
         },
         {
-         "t": "Faculty conference funding not reported",
-         "u": ""
+         "t": "Faculty conference funding not reported"
         }
        ]
       ],
@@ -668,12 +597,10 @@ body.editing .card{cursor:pointer}
        "Organize and promote internal research events like the Lerner Faculty Research Showcase and Distinguished Speaker Series to recognize faculty’s research achievements.",
        [
         {
-         "t": "Inaugural Lerner Distinguished Faculty Speaker Series featured Carlos Asarta and Bintong Chen (March 2025)",
-         "u": "https://www.udel.edu/udaily/2025/february/inaugural-lerner-distinguished-faculty-speaker-series/"
+         "t": "Inaugural Lerner Distinguished Faculty Speaker Series featured Carlos Asarta and Bintong Chen (March 2025)"
         },
         {
-         "t": "No Faculty Research Showcase found since November 2023",
-         "u": ""
+         "t": "No Faculty Research Showcase found since November 2023"
         }
        ]
       ],
@@ -682,12 +609,10 @@ body.editing .card{cursor:pointer}
        "Promote faculty expertise and publications through strategic marketing efforts.",
        [
         {
-         "t": "78 media stories listed for 2025–26, in outlets including The New York Times, Reuters, Bloomberg, CNBC and Forbes",
-         "u": "https://lerner.udel.edu/seeing-opportunity/lerner-faculty-staff-in-the-news/"
+         "t": "78 media stories listed for 2025–26, in outlets including The New York Times, Reuters, Bloomberg, CNBC and Forbes"
         },
         {
-         "t": "Academic Showcase web hub features faculty research and honors",
-         "u": "https://lerner.udel.edu/faculty-and-research/academic-showcase/"
+         "t": "Academic Showcase web hub features faculty research and honors"
         }
        ]
       ]
@@ -709,28 +634,22 @@ body.editing .card{cursor:pointer}
        "Build a state-of-the-art facility with cutting-edge technology and flexible learning spaces to support instruction, collaboration, faculty-student engagement, industry partnerships and innovative co-curricular activities.",
        [
         {
-         "t": "$71.5M Siegfried gift secured for Siegfried Hall",
-         "u": ""
+         "t": "$71.5M Siegfried gift secured for Siegfried Hall"
         },
         {
-         "t": "VDC Annex development plans approved",
-         "u": ""
+         "t": "VDC Annex development plans approved"
         },
         {
-         "t": "Financial Planning Center opened with Charles Schwab",
-         "u": ""
+         "t": "Financial Planning Center opened with Charles Schwab"
         },
         {
-         "t": "Space utilization audit and fixes for bottlenecks in Purnell and Lerner Halls",
-         "u": ""
+         "t": "Space utilization audit and fixes for bottlenecks in Purnell and Lerner Halls"
         },
         {
-         "t": "Technology upgrades to two computing labs serving 17 courses",
-         "u": ""
+         "t": "Technology upgrades to two computing labs serving 17 courses"
         },
         {
-         "t": "More than $60M of the $120M Transformative Excellence investment secured (August 2025)",
-         "u": "https://poetsandquants.com/2025/08/14/inside-the-120-million-plan-to-transform-delawares-lerner-college/"
+         "t": "More than $60M of the $120M Transformative Excellence investment secured (August 2025)"
         }
        ]
       ],
@@ -739,12 +658,10 @@ body.editing .card{cursor:pointer}
        "Optimize the organizational structure to align with Lerner’s transformative excellence goals and operational efficiency.",
        [
         {
-         "t": "Academic reorganization into 6 departments and a school, effective July 1, 2026",
-         "u": "https://lerner.udel.edu/seeing-opportunity/lerner-reorganizes-departments-launches-new-school/"
+         "t": "Academic reorganization into 6 departments and a school, effective July 1, 2026"
         },
         {
-         "t": "HR Business Support structure for Department Chairs and the Dean’s Office",
-         "u": ""
+         "t": "HR Business Support structure for Department Chairs and the Dean’s Office"
         }
        ]
       ],
@@ -753,12 +670,10 @@ body.editing .card{cursor:pointer}
        "Measure and report the success of all action plan activities aligned with the three core impacts: tracking student career outcomes and alumni satisfaction, scholarly influence through top-tier publications and citations, and industry and societal engagement via program competitiveness, revenue growth, and increased external support.",
        [
         {
-         "t": "AACSB strategic tracking module deployed",
-         "u": ""
+         "t": "AACSB strategic tracking module deployed"
         },
         {
-         "t": "Horn tracks startup survival (63% across 104 ventures)",
-         "u": ""
+         "t": "Horn tracks startup survival (63% across 104 ventures)"
         }
        ]
       ],
@@ -767,28 +682,22 @@ body.editing .card{cursor:pointer}
        "Foster a culture of in-person engagement by encouraging faculty and staff to utilize on-campus spaces for research discussions, mentoring, and collaborative initiatives.",
        [
         {
-         "t": "Annual Lerner leadership retreat",
-         "u": ""
+         "t": "Annual Lerner leadership retreat"
         },
         {
-         "t": "Several Coffee with the Deans sessions each semester for faculty and staff to raise concerns",
-         "u": ""
+         "t": "Several Coffee with the Deans sessions each semester for faculty and staff to raise concerns"
         },
         {
-         "t": "Two town halls on the UD Pulse Survey results",
-         "u": ""
+         "t": "Two town halls on the UD Pulse Survey results"
         },
         {
-         "t": "Collaboration rooms in many academic departments for faculty meetings",
-         "u": ""
+         "t": "Collaboration rooms in many academic departments for faculty meetings"
         },
         {
-         "t": "Lerner Staff Engagement and Recognition Committee runs in-person community service and team-building activities",
-         "u": ""
+         "t": "Lerner Staff Engagement and Recognition Committee runs in-person community service and team-building activities"
         },
         {
-         "t": "New faculty mentored by experienced faculty",
-         "u": ""
+         "t": "New faculty mentored by experienced faculty"
         }
        ]
       ]
@@ -802,12 +711,10 @@ body.editing .card{cursor:pointer}
        "Raise funds to establish more endowed chairs and term professorships, and summer support for faculty.",
        [
         {
-         "t": "Newly established Edgar S. Woolard Jr. Chair of Corporate Governance, with Fei Xie appointed (September 2026)",
-         "u": "https://www.udel.edu/udaily/2026/september/for-the-record-september-11-2026/"
+         "t": "Newly established Edgar S. Woolard Jr. Chair of Corporate Governance, with Fei Xie appointed (September 2026)"
         },
         {
-         "t": "Summer faculty support not reported",
-         "u": ""
+         "t": "Summer faculty support not reported"
         }
        ]
       ],
@@ -816,12 +723,10 @@ body.editing .card{cursor:pointer}
        "Establish opportunities, including professional development resources, for staff to advance their careers, and training programs to improve job performance.",
        [
         {
-         "t": "Comprehensive onboarding materials developed",
-         "u": ""
+         "t": "Comprehensive onboarding materials developed"
         },
         {
-         "t": "Anyone in Lerner can recognize a staff member through a simple form, and recognitions are featured in the monthly newsletter",
-         "u": ""
+         "t": "Anyone in Lerner can recognize a staff member through a simple form, and recognitions are featured in the monthly newsletter"
         }
        ]
       ]
@@ -835,12 +740,10 @@ body.editing .card{cursor:pointer}
        "Improve and sustain an inclusive, collaborative environment and culture where Lerner College stakeholders feel valued, supported, and engaged in our mission through meaningful recognition, transparent evaluations, structured dialogue and opportunities for growth.",
        [
         {
-         "t": "School Culture Committee formed",
-         "u": ""
+         "t": "School Culture Committee formed"
         },
         {
-         "t": "Monthly newsletter shares events, resources and staff recognitions submitted by anyone in Lerner",
-         "u": ""
+         "t": "Monthly newsletter shares events, resources and staff recognitions submitted by anyone in Lerner"
         }
        ]
       ],
@@ -849,20 +752,16 @@ body.editing .card{cursor:pointer}
        "Strengthen and expand inclusive initiatives throughout the Lerner experience, integrating these principles into all our programs, including professional development programs in leadership, technology and industry trends.",
        [
         {
-         "t": "Insight Into Diversity “Inspiring Programs” Award",
-         "u": ""
+         "t": "Insight Into Diversity “Inspiring Programs” Award"
         },
         {
-         "t": "Professional Attire Fund awards nearly $20,000 a year to 100+ students",
-         "u": ""
+         "t": "Professional Attire Fund awards nearly $20,000 a year to 100+ students"
         },
         {
-         "t": "Women’s Leadership Summit",
-         "u": ""
+         "t": "Women’s Leadership Summit"
         },
         {
-         "t": "Outreach partnership with the Wilmington Community Center",
-         "u": ""
+         "t": "Outreach partnership with the Wilmington Community Center"
         }
        ]
       ]
@@ -884,20 +783,16 @@ body.editing .card{cursor:pointer}
        "Embed AI and Technology into undergraduate and graduate curricula.",
        [
         {
-         "t": "MS in Applied AI for Business",
-         "u": ""
+         "t": "MS in Applied AI for Business"
         },
         {
-         "t": "Applied AI undergraduate minor",
-         "u": ""
+         "t": "Applied AI undergraduate minor"
         },
         {
-         "t": "AI major in the MBA",
-         "u": ""
+         "t": "AI major in the MBA"
         },
         {
-         "t": "Responsible AI and simulation modules in core courses",
-         "u": ""
+         "t": "Responsible AI and simulation modules in core courses"
         }
        ]
       ],
@@ -906,12 +801,10 @@ body.editing .card{cursor:pointer}
        "Enhance digital literacy through hands-on workshops and technology-driven learning experiences for faculty and staff.",
        [
         {
-         "t": "OpenAI and Anthropic business subscriptions with 40 current users",
-         "u": ""
+         "t": "OpenAI and Anthropic business subscriptions with 40 current users"
         },
         {
-         "t": "LLM subscriptions for professional development",
-         "u": ""
+         "t": "LLM subscriptions for professional development"
         }
        ]
       ],
@@ -920,24 +813,19 @@ body.editing .card{cursor:pointer}
        "Help faculty advance their research at the rapidly developing intersection of AI, technology, business, and economics.",
        [
         {
-         "t": "Custom internal AI GPT model for Lerner/UD",
-         "u": ""
+         "t": "Custom internal AI GPT model for Lerner/UD"
         },
         {
-         "t": "20 research computing systems managed for faculty",
-         "u": ""
+         "t": "20 research computing systems managed for faculty"
         },
         {
-         "t": "Lerner AI Working Group and draft AI framework",
-         "u": ""
+         "t": "Lerner AI Working Group and draft AI framework"
         },
         {
-         "t": "AI guidelines integrated with university cybersecurity and data protection teams",
-         "u": ""
+         "t": "AI guidelines integrated with university cybersecurity and data protection teams"
         },
         {
-         "t": "FinTech–PropTech research partnership with Warwick Business School’s Gillmore Centre (November 2025)",
-         "u": "https://lerner.udel.edu/seeing-opportunity/ud-lerner-warwick-establish-fintech-proptech-partnership"
+         "t": "FinTech–PropTech research partnership with Warwick Business School’s Gillmore Centre (November 2025)"
         }
        ]
       ]
@@ -951,24 +839,19 @@ body.editing .card{cursor:pointer}
        "Launch industry-responsive graduate programs, co-curricular programs, and certificates in fintech, AI, and advanced analytics.",
        [
         {
-         "t": "MS in Applied AI",
-         "u": ""
+         "t": "MS in Applied AI"
         },
         {
-         "t": "Generative AI for Business Certificate (first graduate)",
-         "u": ""
+         "t": "Generative AI for Business Certificate (first graduate)"
         },
         {
-         "t": "M.A. in Econ Data Analytics",
-         "u": ""
+         "t": "M.A. in Econ Data Analytics"
         },
         {
-         "t": "FinTech major and minor",
-         "u": ""
+         "t": "FinTech major and minor"
         },
         {
-         "t": "Expanded 4+1 MBA pathways",
-         "u": ""
+         "t": "Expanded 4+1 MBA pathways"
         }
        ]
       ],
@@ -977,8 +860,7 @@ body.editing .card{cursor:pointer}
        "Develop workshops and non-degree programs tailored to workforce upskilling in cutting-edge technologies.",
        [
         {
-         "t": "Executive education certificates piloted with about 30 participants",
-         "u": ""
+         "t": "Executive education certificates piloted with about 30 participants"
         }
        ]
       ],
@@ -987,12 +869,10 @@ body.editing .card{cursor:pointer}
        "Partner with industry and government to co-create sponsored projects and training initiatives.",
        [
         {
-         "t": "Collaborated with Microsoft and AWS on course module design",
-         "u": ""
+         "t": "Collaborated with Microsoft and AWS on course module design"
         },
         {
-         "t": "American Fintech Council funded a faculty project using LLMs to simulate consumer behavior",
-         "u": "https://udel.edu/udaily/2025/april/for-the-record-friday-april-18-2025"
+         "t": "American Fintech Council funded a faculty project using LLMs to simulate consumer behavior"
         }
        ]
       ]
@@ -1006,16 +886,13 @@ body.editing .card{cursor:pointer}
        "Host AI and tech-focused events, such as conferences, showcases, etc., to strengthen ties with industry.",
        [
         {
-         "t": "Hosted a global teaching workshop on AI in business education (May 2025)",
-         "u": "https://www.udel.edu/udaily/2025/may/the-lerner-college-hosts-global-teaching-workshop-on-ai"
+         "t": "Hosted a global teaching workshop on AI in business education (May 2025)"
         },
         {
-         "t": "HenHacks and pitch competitions",
-         "u": ""
+         "t": "HenHacks and pitch competitions"
         },
         {
-         "t": "Represented the College with 31 other AACSB schools at the Annual Technology in Business School Roundtable",
-         "u": ""
+         "t": "Represented the College with 31 other AACSB schools at the Annual Technology in Business School Roundtable"
         }
        ]
       ],
@@ -1024,8 +901,7 @@ body.editing .card{cursor:pointer}
        "Collaborate with regional technology partners to drive impactful industry-facing initiatives and applied research projects and student learning opportunities.",
        [
         {
-         "t": "Represented the College in Internet2 AI discussions, the University President’s AI roundtable and First State AI Institute",
-         "u": ""
+         "t": "Represented the College in Internet2 AI discussions, the University President’s AI roundtable and First State AI Institute"
         }
        ]
       ],
@@ -1034,16 +910,13 @@ body.editing .card{cursor:pointer}
        "Support and expand AI and tech-related innovation hubs, centers and institutes.",
        [
         {
-         "t": "Real-time AI trading simulator in the FinTech Lab",
-         "u": ""
+         "t": "Real-time AI trading simulator in the FinTech Lab"
         },
         {
-         "t": "Bloomberg Lab re-established",
-         "u": ""
+         "t": "Bloomberg Lab re-established"
         },
         {
-         "t": "No-cost API access to frontier AI models for student builders",
-         "u": ""
+         "t": "No-cost API access to frontier AI models for student builders"
         }
        ]
       ]
@@ -1065,12 +938,10 @@ body.editing .card{cursor:pointer}
        "Raise external funding to create a dedicated entity to centralize faculty, programs and students associated with innovation initiatives, focusing on venture creation, entrepreneurship and societal impact.",
        [
         {
-         "t": "Neil and Sharon Book gift founded the Neil Book School of Innovation & Entrepreneurship, launched July 1, 2026",
-         "u": "https://www.udel.edu/udaily/2026/may/book-school-innovation-entrepreneurship/"
+         "t": "Neil and Sharon Book gift founded the Neil Book School of Innovation & Entrepreneurship, launched July 1, 2026"
         },
         {
-         "t": "Dan Freeman named founding director",
-         "u": "https://www.udel.edu/udaily/2026/july/dan-freeman-director-neil-book-school-innovation-entrepreneurship/"
+         "t": "Dan Freeman named founding director"
         }
        ]
       ],
@@ -1079,16 +950,13 @@ body.editing .card{cursor:pointer}
        "Partner with industry, government and alumni to drive innovation through research, education, and the development of student-led and UD intellectual property-based ventures.",
        [
         {
-         "t": "Summer Founders supported 12 ventures with $36k in grants",
-         "u": ""
+         "t": "Summer Founders supported 12 ventures with $36k in grants"
         },
         {
-         "t": "104 tracked ventures raised $11.8M in follow-on funding",
-         "u": ""
+         "t": "104 tracked ventures raised $11.8M in follow-on funding"
         },
         {
-         "t": "Research Advisory Board created for Social Venture and Impact Accelerator programs",
-         "u": ""
+         "t": "Research Advisory Board created for Social Venture and Impact Accelerator programs"
         }
        ]
       ],
@@ -1097,8 +965,7 @@ body.editing .card{cursor:pointer}
        "Enhance and elevate the entrepreneurship program to increase its prominence as a leading program in the nation.",
        [
         {
-         "t": "Undergraduate entrepreneurship ranked Top 25 nationally and #3 in the Mid-Atlantic (2026 Princeton Review and Entrepreneur)",
-         "u": "https://www.udel.edu/udaily/2026/july/dan-freeman-director-neil-book-school-innovation-entrepreneurship/"
+         "t": "Undergraduate entrepreneurship ranked Top 25 nationally and #3 in the Mid-Atlantic (2026 Princeton Review and Entrepreneur)"
         }
        ]
       ]
@@ -1112,20 +979,16 @@ body.editing .card{cursor:pointer}
        "Expand co-curricular programs like Hen Hatch and the Venture Development Center to engage students in real-world problem-solving.",
        [
         {
-         "t": "VDC Annex development plans approved",
-         "u": ""
+         "t": "VDC Annex development plans approved"
         },
         {
-         "t": "HenHacks, pitch competitions and Summer Founders",
-         "u": ""
+         "t": "HenHacks, pitch competitions and Summer Founders"
         },
         {
-         "t": "Student-powered retail store (“Blue Hen Made”) conceptualized",
-         "u": ""
+         "t": "Student-powered retail store (“Blue Hen Made”) conceptualized"
         },
         {
-         "t": "Hen Hatch continues with $50,000 in prizes; 2026 finals on December 3",
-         "u": "https://www.udel.edu/research-innovation/horn/venture-support/hen-hatch/"
+         "t": "Hen Hatch continues with $50,000 in prizes; 2026 finals on December 3"
         }
        ]
       ],
@@ -1134,12 +997,10 @@ body.editing .card{cursor:pointer}
        "Leverage Horn Entrepreneurship to provide mentorship, interdisciplinary collaboration and innovation training for students.",
        [
         {
-         "t": "Pro-bono student consulting scaled",
-         "u": ""
+         "t": "Pro-bono student consulting scaled"
         },
         {
-         "t": "Executive in Residence program for mentoring and guest lectures",
-         "u": ""
+         "t": "Executive in Residence program for mentoring and guest lectures"
         }
        ]
       ],
@@ -1148,12 +1009,10 @@ body.editing .card{cursor:pointer}
        "Embed innovation and entrepreneurial learning opportunities into undergraduate and graduate programs.",
        [
         {
-         "t": "Interdisciplinary minors in Sustainability and in Entrepreneurship & Real Estate",
-         "u": ""
+         "t": "Interdisciplinary minors in Sustainability and in Entrepreneurship & Real Estate"
         },
         {
-         "t": "Experiential projects from the first semester",
-         "u": ""
+         "t": "Experiential projects from the first semester"
         }
        ]
       ]
@@ -1167,16 +1026,13 @@ body.editing .card{cursor:pointer}
        "Promote translational and theoretical research that addresses pressing societal challenges and fosters industry and government-funded collaborations.",
        [
         {
-         "t": "Research Translation pilot",
-         "u": ""
+         "t": "Research Translation pilot"
         },
         {
-         "t": "About 3 interdisciplinary grants ($3.4M) with Nursing, Engineering and Health",
-         "u": ""
+         "t": "About 3 interdisciplinary grants ($3.4M) with Nursing, Engineering and Health"
         },
         {
-         "t": "Templeton grant for EARTH Institute",
-         "u": ""
+         "t": "Templeton grant for EARTH Institute"
         }
        ]
       ],
@@ -1185,16 +1041,13 @@ body.editing .card{cursor:pointer}
        "Support faculty and student engagement in policy-oriented and innovation-focused conferences, workshops and publications.",
        [
         {
-         "t": "Annual Economic Forecast conference convened regional and national leaders, with partners including the Federal Reserve Bank of Philadelphia",
-         "u": ""
+         "t": "Annual Economic Forecast conference convened regional and national leaders, with partners including the Federal Reserve Bank of Philadelphia"
         },
         {
-         "t": "Weinberg Corporate Governance Symposium hosted",
-         "u": ""
+         "t": "Weinberg Corporate Governance Symposium hosted"
         },
         {
-         "t": "CEEE published research, model lessons and the fifth edition of Keys to Financial Success",
-         "u": ""
+         "t": "CEEE published research, model lessons and the fifth edition of Keys to Financial Success"
         }
        ]
       ]
@@ -1216,16 +1069,13 @@ body.editing .card{cursor:pointer}
        "Fund impactful faculty research on leadership, management, reporting and corporate governance through seed grants and sponsored partnerships.",
        [
         {
-         "t": "New Woolard Chair supports corporate governance teaching and research",
-         "u": "https://www.udel.edu/udaily/2026/september/for-the-record-september-11-2026/"
+         "t": "New Woolard Chair supports corporate governance teaching and research"
         },
         {
-         "t": "Inaugural Faculty Research Director named at the Weinberg Center",
-         "u": ""
+         "t": "Inaugural Faculty Research Director named at the Weinberg Center"
         },
         {
-         "t": "30+ internal research grants across the college",
-         "u": ""
+         "t": "30+ internal research grants across the college"
         }
        ]
       ],
@@ -1234,12 +1084,10 @@ body.editing .card{cursor:pointer}
        "Establish and leverage centers and institutes to increase the visibility of research via annual showcases and marketing faculty publications.",
        [
         {
-         "t": "Siegfried Institute for leadership and free enterprise launched",
-         "u": ""
+         "t": "Siegfried Institute for leadership and free enterprise launched"
         },
         {
-         "t": "25th Anniversary Weinberg Corporate Governance Symposium",
-         "u": ""
+         "t": "25th Anniversary Weinberg Corporate Governance Symposium"
         }
        ]
       ],
@@ -1248,16 +1096,13 @@ body.editing .card{cursor:pointer}
        "Increase top-tier journal publications, citations, media coverage and policy adoption in leadership, organization and corporate governance.",
        [
         {
-         "t": "Published in Academy of Management Journal and Review",
-         "u": ""
+         "t": "Published in Academy of Management Journal and Review"
         },
         {
-         "t": "Thinkers50, Highly Cited Researcher and AOM Decade Award recognition (Dr. Wendy Smith)",
-         "u": ""
+         "t": "Thinkers50, Highly Cited Researcher and AOM Decade Award recognition (Dr. Wendy Smith)"
         },
         {
-         "t": "Editor and editorial board roles at FT50 journals",
-         "u": ""
+         "t": "Editor and editorial board roles at FT50 journals"
         }
        ]
       ]
@@ -1271,12 +1116,10 @@ body.editing .card{cursor:pointer}
        "Expand executive and continuing education programs targeting leadership and corporate governance.",
        [
         {
-         "t": "Corporate governance education delivered to the Board of Trustees",
-         "u": ""
+         "t": "Corporate governance education delivered to the Board of Trustees"
         },
         {
-         "t": "Executive education certificates piloted with about 30 participants",
-         "u": ""
+         "t": "Executive education certificates piloted with about 30 participants"
         }
        ]
       ],
@@ -1285,12 +1128,10 @@ body.editing .card{cursor:pointer}
        "Integrate leadership case studies, board-level simulations and decision-making exercises into Lerner programs.",
        [
         {
-         "t": "Leadership & Ethics Case Competition launched in 2024",
-         "u": ""
+         "t": "Leadership & Ethics Case Competition launched in 2024"
         },
         {
-         "t": "Simulation modules added to core courses",
-         "u": ""
+         "t": "Simulation modules added to core courses"
         }
        ]
       ],
@@ -1299,12 +1140,10 @@ body.editing .card{cursor:pointer}
        "Promote leadership skill development through advising, career services and academic programs.",
        [
         {
-         "t": "Leadership Certificate integrated into student organization governance",
-         "u": ""
+         "t": "Leadership Certificate integrated into student organization governance"
         },
         {
-         "t": "Career Lab and mentoring programs",
-         "u": ""
+         "t": "Career Lab and mentoring programs"
         }
        ]
       ]
@@ -1318,20 +1157,16 @@ body.editing .card{cursor:pointer}
        "Host business and economic leadership summits, workshops, and board-level conferences in partnership with industry organizations.",
        [
         {
-         "t": "25th Weinberg Corporate Governance Symposium",
-         "u": ""
+         "t": "25th Weinberg Corporate Governance Symposium"
         },
         {
-         "t": "Women’s Leadership Summit",
-         "u": ""
+         "t": "Women’s Leadership Summit"
         },
         {
-         "t": "Annual Economic Forecast conference",
-         "u": ""
+         "t": "Annual Economic Forecast conference"
         },
         {
-         "t": "Delaware Women’s Hall of Fame “Lessons in Leadership” speaker series launched at Lerner (March 2025)",
-         "u": "https://lerner.udel.edu/seeing-opportunity/lerner-colleges-top-stories-of-2025"
+         "t": "Delaware Women’s Hall of Fame “Lessons in Leadership” speaker series launched at Lerner (March 2025)"
         }
        ]
       ],
@@ -1340,16 +1175,13 @@ body.editing .card{cursor:pointer}
        "Offer mentorship and experiential learning opportunities, such as board shadowing and consulting projects with alumni and board members.",
        [
         {
-         "t": "Executive Mentoring and Job Shadow programs running",
-         "u": ""
+         "t": "Executive Mentoring and Job Shadow programs running"
         },
         {
-         "t": "Pro-bono student consulting scaled",
-         "u": ""
+         "t": "Pro-bono student consulting scaled"
         },
         {
-         "t": "Board shadowing not reported",
-         "u": ""
+         "t": "Board shadowing not reported"
         }
        ]
       ]
@@ -1363,15 +1195,14 @@ body.editing .card{cursor:pointer}
 const DATA=JSON.parse(document.getElementById("plan-data").textContent);
 const TEMPLATE="<!doctype html>\n"+document.documentElement.outerHTML;
 const PILLARS=DATA.pillars;
-const LABEL={a:"Achieved",p:"In progress",n:"Not yet reported"};
+const LABEL={a:"Achieving",p:"In progress",n:"Not yet reported"};
 const ORDER=["a","p","n"];
 const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e};
 const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 const swatch=s=>`<i class="sw blk ${s}" style="height:11px"></i>`;
 function counts(items){const c={a:0,p:0,n:0};items.forEach(i=>c[i[0]]++);return c}
 function allItems(p){return p.objectives.flatMap(o=>o.items)}
-function blocks(c,total){const b=el("div","blocks");b.style.gridTemplateColumns=`repeat(${Math.max(total,1)},minmax(0,1fr))`;ORDER.forEach(s=>{for(let i=0;i<c[s];i++)b.appendChild(el("div","blk "+s))});b.setAttribute("role","img");b.setAttribute("aria-label",`${c.a} achieved, ${c.p} in progress, ${c.n} not yet reported`);return b}
-const validUrl=u=>/^https?:\/\/\S+$/.test((u||"").trim());
+function blocks(c,total){const b=el("div","blocks");b.style.gridTemplateColumns=`repeat(${Math.max(total,1)},minmax(0,1fr))`;ORDER.forEach(s=>{for(let i=0;i<c[s];i++)b.appendChild(el("div","blk "+s))});b.setAttribute("role","img");b.setAttribute("aria-label",`${c.a} achieving, ${c.p} in progress, ${c.n} not yet reported`);return b}
 
 let current=null, filter="all", editing=false, dirty=false;
 
@@ -1390,7 +1221,7 @@ function renderSummary(){
   PILLARS.forEach(p=>{
     const it=allItems(p),c=counts(it);
     const b=el("button","card");b.type="button";b.setAttribute("aria-pressed",String(p.id===current));b.setAttribute("aria-controls","detail");
-    b.innerHTML=`<h3>${esc(p.name)}</h3><div class="cnt"><strong>${c.a} of ${it.length}</strong><small>achieved</small></div>`;
+    b.innerHTML=`<h3>${esc(p.name)}</h3><div class="cnt"><strong>${c.a} of ${it.length}</strong><small>achieving</small></div>`;
     b.appendChild(blocks(c,it.length));
     b.appendChild(el("div","foot",`${c.p} in progress · ${c.n} not yet reported`));
     b.addEventListener("click",()=>select(p.id,true));
@@ -1406,7 +1237,7 @@ function renderDetail(focusSel){
   const p=PILLARS.find(x=>x.id===current), it=allItems(p), c=counts(it), d=document.getElementById("detail");
   d.innerHTML="";
   const h=el("div","detail-head");
-  h.innerHTML=`<div class="eyebrow">${p.kind} · ${c.a} of ${it.length} achieved</div><h2>${esc(p.name)}</h2><p class="goal">${esc(p.goal)}</p>`;
+  h.innerHTML=`<div class="eyebrow">${p.kind} · ${c.a} of ${it.length} achieving</div><h2>${esc(p.name)}</h2><p class="goal">${esc(p.goal)}</p>`;
   d.appendChild(h);
   if(!editing){
     const tb=el("div","toolbar");tb.setAttribute("role","group");tb.setAttribute("aria-label","Filter by status");
@@ -1440,15 +1271,12 @@ function renderDetail(focusSel){
           const box=el("div","hl-row");
           const t=document.createElement("textarea");t.className="ed";t.rows=2;t.value=x.t;t.placeholder="What happened";t.setAttribute("aria-label","Highlight");t.dataset.k=`h-${oi}-${ii}-${hi}`;
           t.addEventListener("input",()=>{x.t=t.value;changed(false)});
-          const u=document.createElement("input");u.className="ed";u.type="url";u.value=x.u;u.placeholder="Source link (optional), https://…";u.setAttribute("aria-label","Source link");
-          const warn=el("div","warn");const chk=()=>{warn.textContent=u.value.trim()&&!validUrl(u.value)?"Links need to start with https:// to show on the page.":""};chk();
-          u.addEventListener("input",()=>{x.u=u.value.trim();chk();changed(false)});
           const rm=el("button","linkbtn danger","Remove");rm.type="button";rm.setAttribute("aria-label","Remove highlight");
           rm.addEventListener("click",()=>{item[2].splice(hi,1);changed(false);renderDetail()});
-          box.append(t,u,warn,rm);hc.appendChild(box);
+          box.append(t,rm);hc.appendChild(box);
         });
         const add=el("button","linkbtn","+ Add highlight");add.type="button";
-        add.addEventListener("click",()=>{item[2].push({t:"",u:""});changed(false);renderDetail(`[data-k="h-${oi}-${ii}-${item[2].length-1}"]`)});
+        add.addEventListener("click",()=>{item[2].push({t:""});changed(false);renderDetail(`[data-k="h-${oi}-${ii}-${item[2].length-1}"]`)});
         hc.appendChild(add);r.appendChild(hc);
       }else{
         const hl=item[2].filter(x=>x.t.trim());
@@ -1457,7 +1285,7 @@ function renderDetail(focusSel){
         const sb=el("button","suggest","Suggest an update");sb.type="button";sb.addEventListener("click",()=>openForm(p.id+"|"+oi+"|"+ii,"add"));ac.appendChild(sb);
         if(hl.length){const eb=el("button","suggest","Suggest an edit");eb.type="button";eb.style.marginLeft="14px";eb.addEventListener("click",()=>openForm(p.id+"|"+oi+"|"+ii,"edit"));ac.appendChild(eb)}
         r.appendChild(ac);
-        r.appendChild(hl.length?el("ul","hl",hl.map(x=>`<li>${esc(x.t)}${validUrl(x.u)?` <a class="src" href="${esc(x.u.trim())}" target="_blank" rel="noopener">Source</a>`:""}</li>`).join("")):el("ul","hl none","<li>No progress reported yet.</li>"));
+        r.appendChild(hl.length?el("ul","hl",hl.map(x=>`<li>${esc(x.t)}</li>`).join("")):el("ul","hl none","<li>No progress reported yet.</li>"));
       }
       s.appendChild(r);
     });
@@ -1508,8 +1336,9 @@ window.addEventListener("beforeunload",e=>{if(dirty){e.preventDefault();e.return
 
 // ---- Submit an update (by email) ----
 const OWNER_EMAIL="jgugino@udel.edu";
-const SLBL={"":"No change",a:"Achieved",p:"In progress",n:"Not yet reported"};
-const fT=document.getElementById("f-type"),fP=document.getElementById("f-pillar"),fI=document.getElementById("f-item"),fS=document.getElementById("f-status"),fH=document.getElementById("f-hl"),fHL=document.getElementById("f-hl-lbl"),fU=document.getElementById("f-src"),fNm=document.getElementById("f-name"),fN=document.getElementById("f-note"),fMsg=document.getElementById("f-msg"),fFb=document.getElementById("f-fallback"),fCopy=document.getElementById("f-copy"),fMail=document.getElementById("f-mailto");
+const FORM_ENDPOINT="https://formsubmit.co/ajax/"+OWNER_EMAIL;
+const SLBL={"":"No change",a:"Achieving",p:"In progress",n:"Not yet reported"};
+const fT=document.getElementById("f-type"),fP=document.getElementById("f-pillar"),fI=document.getElementById("f-item"),fS=document.getElementById("f-status"),fH=document.getElementById("f-hl"),fHL=document.getElementById("f-hl-lbl"),fNm=document.getElementById("f-name"),fN=document.getElementById("f-note"),fMsg=document.getElementById("f-msg"),fFb=document.getElementById("f-fallback"),fCopy=document.getElementById("f-copy"),fMail=document.getElementById("f-mailto");
 fMail.href="mailto:"+OWNER_EMAIL;fMail.textContent=OWNER_EMAIL;
 const ADD_PH="One highlight per line, for example: Hosted the spring research showcase with 40 attendees";
 let prefill="";
@@ -1534,8 +1363,6 @@ document.getElementById("subForm").addEventListener("submit",e=>{
   const lines=fH.value.split("\n").map(x=>x.trim()).filter(Boolean);
   if(fT.value==="edit"&&fH.value===prefill&&!fS.value){setMsg("Change the wording before sending.",true);fH.focus();return}
   if(!lines.length&&!fS.value){setMsg("Add at least one highlight or choose a status change.",true);fH.focus();return}
-  const src=fU.value.trim();
-  if(src&&!validUrl(src)){setMsg("The source link needs to start with https://",true);fU.focus();return}
   if(!fNm.value.trim()){setMsg("Add your name so the update can be followed up.",true);fNm.focus();return}
   const f=itemByKey(fI.value);if(!f){setMsg("Choose an action item.",true);return}
   const ed=fT.value==="edit";
@@ -1545,15 +1372,23 @@ document.getElementById("subForm").addEventListener("submit",e=>{
     ,"Current status: "+LABEL[f.it[0]],"Suggested status: "+SLBL[fS.value],""];
   if(ed){b.push("Current highlights:",...f.it[2].filter(h=>h.t.trim()).map(h=>"- "+h.t),"","Suggested wording:")}else b.push("What happened:");
   b.push(...(lines.length?lines.map(x=>"- "+x):["(none)"]));
-  if(src)b.push("","Source: "+src);
   if(fN.value.trim())b.push("","Note: "+fN.value.trim());
   b.push("","From: "+fNm.value.trim());
   const body=b.join("\n"),subject="Plan dashboard update: "+f.p.name;
-  fCopy.value="To: "+OWNER_EMAIL+"\nSubject: "+subject+"\n\n"+body;fFb.hidden=false;
-  let url="mailto:"+OWNER_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body.replace(/\n/g,"\r\n"));
-  if(url.length>1900)url="mailto:"+OWNER_EMAIL+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent("(This update is long. Please paste the copied text from the dashboard here.)");
-  window.location.href=url;
-  setMsg("Your email app should open with the update filled in. Press Send there to finish.");
+  fCopy.value="To: "+OWNER_EMAIL+"\nSubject: "+subject+"\n\n"+body;fFb.hidden=true;
+  const btn=document.getElementById("f-send");btn.disabled=true;btn.textContent="Sending…";setMsg("");
+  const payload={_subject:subject,_template:"box",_honey:document.getElementById("f-honey").value,
+    "Type":ed?"Correct existing highlights":"New progress to add","Pillar":f.p.name,"Objective":f.o.t,"Action item":f.it[1],
+    "Current status":LABEL[f.it[0]],"Suggested status":SLBL[fS.value]};
+  if(ed)payload["Current highlights"]=f.it[2].filter(h=>h.t.trim()).map(h=>"• "+h.t).join("\n")||"(none)";
+  payload[ed?"Suggested wording":"What happened"]=lines.length?lines.map(x=>"• "+x).join("\n"):"(none)";
+  if(fN.value.trim())payload["Note"]=fN.value.trim();
+  payload["From"]=fNm.value.trim();
+  fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)})
+    .then(r=>r.json().catch(()=>({})).then(j=>{if(!r.ok||String(j.success)!=="true")throw new Error(j.message||"Send failed")}))
+    .then(()=>{setMsg("Thank you! Your update was sent for review.");fH.value="";fN.value="";fS.value="";prefill="";if(fT.value==="edit")syncType()})
+    .catch(()=>{fFb.hidden=false;setMsg("Sorry, that didn’t go through.",true)})
+    .finally(()=>{btn.disabled=false;btn.textContent="Send update"});
 });
 document.getElementById("f-copybtn").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(fCopy.value);setMsg("Copied. Paste it into an email to "+OWNER_EMAIL+".")}catch(e){fCopy.focus();fCopy.select();setMsg("Select the text and copy it.")}});
 fillItems();syncType();
