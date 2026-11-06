@@ -202,7 +202,7 @@ body.editing .card{cursor:pointer}
         <label>Your name<input id="f-name" autocomplete="name"></label>
         <label>Anything else (optional)<input id="f-note"></label>
       </div>
-      <input type="text" id="f-honey" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+      <input type="text" id="f-honey" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
       <div class="factions"><button class="btn" type="submit" id="f-send">Send update</button><span id="f-msg" class="fmsg" aria-live="polite"></span></div>
       <div id="f-fallback" class="fallback" hidden>
         <p class="fmsg">The update couldn’t be sent from the page. Copy the text below and email it to <a id="f-mailto" href="#"></a>.</p>
@@ -1336,7 +1336,8 @@ window.addEventListener("beforeunload",e=>{if(dirty){e.preventDefault();e.return
 
 // ---- Submit an update (by email) ----
 const OWNER_EMAIL="jgugino@udel.edu";
-const FORM_ENDPOINT="https://formsubmit.co/ajax/"+OWNER_EMAIL;
+const FORM_ENDPOINT="https://api.web3forms.com/submit";
+const WEB3FORMS_KEY="591015c4-fc50-469f-ac6d-db5f14eece12";
 const SLBL={"":"No change",a:"Achieving",p:"In progress",n:"Not yet reported"};
 const fT=document.getElementById("f-type"),fP=document.getElementById("f-pillar"),fI=document.getElementById("f-item"),fS=document.getElementById("f-status"),fH=document.getElementById("f-hl"),fHL=document.getElementById("f-hl-lbl"),fNm=document.getElementById("f-name"),fN=document.getElementById("f-note"),fMsg=document.getElementById("f-msg"),fFb=document.getElementById("f-fallback"),fCopy=document.getElementById("f-copy"),fMail=document.getElementById("f-mailto");
 fMail.href="mailto:"+OWNER_EMAIL;fMail.textContent=OWNER_EMAIL;
@@ -1377,7 +1378,7 @@ document.getElementById("subForm").addEventListener("submit",e=>{
   const body=b.join("\n"),subject="Plan dashboard update: "+f.p.name;
   fCopy.value="To: "+OWNER_EMAIL+"\nSubject: "+subject+"\n\n"+body;fFb.hidden=true;
   const btn=document.getElementById("f-send");btn.disabled=true;btn.textContent="Sending…";setMsg("");
-  const payload={_subject:subject,_template:"box",_honey:document.getElementById("f-honey").value,
+  const payload={access_key:WEB3FORMS_KEY,subject:subject,from_name:"Strategic Plan Dashboard",botcheck:document.getElementById("f-honey").value?true:"",
     "Type":ed?"Correct existing highlights":"New progress to add","Pillar":f.p.name,"Objective":f.o.t,"Action item":f.it[1],
     "Current status":LABEL[f.it[0]],"Suggested status":SLBL[fS.value]};
   if(ed)payload["Current highlights"]=f.it[2].filter(h=>h.t.trim()).map(h=>"• "+h.t).join("\n")||"(none)";
@@ -1385,9 +1386,11 @@ document.getElementById("subForm").addEventListener("submit",e=>{
   if(fN.value.trim())payload["Note"]=fN.value.trim();
   payload["From"]=fNm.value.trim();
   fetch(FORM_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json","Accept":"application/json"},body:JSON.stringify(payload)})
-    .then(r=>r.json().catch(()=>({})).then(j=>{if(!r.ok||String(j.success)!=="true")throw new Error(j.message||"Send failed")}))
+    .then(r=>r.json().catch(()=>({})).then(j=>{if(!r.ok||j.success!==true){const er=new Error(j.message||"");er.fs=true;throw er}}))
     .then(()=>{setMsg("Thank you! Your update was sent for review.");fH.value="";fN.value="";fS.value="";prefill="";if(fT.value==="edit")syncType()})
-    .catch(()=>{fFb.hidden=false;setMsg("Sorry, that didn’t go through.",true)})
+    .catch(err=>{fFb.hidden=false;const m=String(err&&err.message||"");
+      if(location.protocol==="file:")setMsg("Updates can only be sent from the live website, not from a copy opened on your computer.",true);
+      else setMsg("Sorry, that didn’t go through"+(m&&err.fs?" ("+m+")":"")+".",true)})
     .finally(()=>{btn.disabled=false;btn.textContent="Send update"});
 });
 document.getElementById("f-copybtn").addEventListener("click",async()=>{try{await navigator.clipboard.writeText(fCopy.value);setMsg("Copied. Paste it into an email to "+OWNER_EMAIL+".")}catch(e){fCopy.focus();fCopy.select();setMsg("Select the text and copy it.")}});
