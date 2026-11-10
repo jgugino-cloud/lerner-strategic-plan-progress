@@ -153,13 +153,15 @@ body.editing .card{cursor:pointer}
 .fallback{margin-top:16px;display:flex;flex-direction:column;gap:8px}
 .fallback[hidden]{display:none}
 .fallback a{color:var(--achieved);font-weight:700}
+.aacsb{margin:8px 0 0;font-size:13px;color:var(--muted,#555);max-width:75ch}
+.aacsb b{color:var(--fg);font-weight:700}
 @media print{#submit,#editbar,.edit-open{display:none!important}}
 </style>
 
 <header class="mast"><div class="wrap"><div class="mast-row"><div>
   <div class="eyebrow">Lerner College of Business and Economics</div>
   <h1>2025–2030 Strategic Plan Progress</h1>
-  <div class="asof" id="asof">Snapshot as of November 3, 2026</div>
+  <div class="asof" id="asof">Snapshot as of November 10, 2026</div>
   </div><button type="button" class="edit-open" id="editBtn" hidden>Edit</button></div>
 </div></header>
 <div id="editbar" hidden><div class="wrap">
@@ -216,7 +218,7 @@ body.editing .card{cursor:pointer}
 </main>
 
 <script type="application/json" id="plan-data">{
- "asOf": "2026-11-03",
+ "asOf": "2026-11-10",
  "pillars": [
   {
    "id": "education",
@@ -232,13 +234,25 @@ body.editing .card{cursor:pointer}
        "Enhance assurance of learning, rigor and fundamental competencies in all our academic programs.",
        [
         {
-         "t": "AACSB accreditation extension maintained"
+         "t": "AACSB business accreditation held since 1966 and separate accounting accreditation since 1984, a combination held by fewer than 200 schools worldwide"
         },
         {
-         "t": "100/100 faculty credential teaching score for three consecutive years (2023–2025)"
+         "t": "Online MBA earned a perfect 100 in U.S. News’ faculty credentials and training category for three straight years (2023–2025), ranking No. 1 nationally"
         },
         {
          "t": "AACSB strategic tracking module deployed"
+        },
+        {
+         "t": "Faculty sufficiency: 81% of student credit hours taught by participating faculty, above AACSB’s 75% norm; both issues from the prior AACSB review resolved"
+        },
+        {
+         "t": "Faculty qualifications: 71% of faculty resources are Scholarly Academic (AACSB minimum 40%), only 1% Additional, and every discipline meets the standards"
+        },
+        {
+         "t": "Annual assurance of learning cycle combines direct assessment of graduating students with indirect surveys of recruiters, mentors, advisors and alumni, with documented “closing the loop” improvements (e.g., Business Analytics B.S. curriculum updates in 2024 and 2025)"
+        },
+        {
+         "t": "In-person and online graduate students scored nearly identically on direct learning assessments (81.4% vs. 81.1%)"
         }
        ]
       ],
@@ -265,7 +279,19 @@ body.editing .card{cursor:pointer}
          "t": "SHRM partnership for undergraduate HR certification pathways"
         },
         {
-         "t": "Pilot framework for college-wide corporate engagement"
+         "t": "Financial Planning and Wealth Management program accredited by the CFP Board, so graduates meet the education requirement for the CFP® exam"
+        },
+        {
+         "t": "First trust management minor at an AACSB-accredited school, graduating about 30 students a year"
+        },
+        {
+         "t": "Accounting Advisory Board meets twice a year, joined by a Young Professionals Advisory Board of alumni with 5–10 years’ experience"
+        },
+        {
+         "t": "New Director of Corporate Affairs position manages relationships with corporate partners"
+        },
+        {
+         "t": "Accounting ranked #16 among public schools by The Wall Street Journal for high-paying accounting jobs (2024)"
         }
        ]
       ],
@@ -277,10 +303,19 @@ body.editing .card{cursor:pointer}
          "t": "Responsible AI and simulation modules in core courses"
         },
         {
-         "t": "Entrepreneurship minors"
+         "t": "Entrepreneurship minors offered to students"
         },
         {
          "t": "Leadership Certificate tied to student organization governance"
+        },
+        {
+         "t": "Accounting service learning: Community Audit grew from 7 Delaware parishes in 2022 to 19 for 2026–27, and the VITA tax clinic grew from 35 to 40 student preparers (2025–2026)"
+        },
+        {
+         "t": "Student clubs give students hands-on leadership experience"
+        },
+        {
+         "t": "Agentic AI Boot Camp filled its 40-seat inaugural session (spring 2026), with 45 more students enrolled for fall 2026"
         }
        ]
       ],
@@ -292,19 +327,28 @@ body.editing .card{cursor:pointer}
          "t": "Reorganized from 5 to 6 departments and a school, including a new BAOT department"
         },
         {
-         "t": "Launched FinTech, HR Management and AI programs"
+         "t": "Launched FinTech, HR Management, AI, and Computer Science and Business programs (Computer Science and Business is interdisciplinary with the Computer Science Department in the College of Engineering)"
         },
         {
          "t": "Redesigned the marketing B.S. with customer strategy and sales leadership concentrations"
         },
         {
-         "t": "Established STEM certificate and study pathways"
+         "t": "Merged the International Business Studies and Global Enterprise Management programs into one cohesive Global Business program"
         },
         {
-         "t": "Exploring pharmaco-economics degree pathways"
+         "t": "24 undergraduate minors: Advertising; Applied AI for Business; Beverage Management; Business Administration; Business Analytics; Economics; Entrepreneurship; Event Management; Financial Reporting; Fintech; Gastronomy and Cuisines; Integrated Design; International Business; Management; Management Information Systems; Professional Selling and Sales Management; Real Estate Management; Restaurant Management; Social Innovation and Entrepreneurship; Spa and Wellness Management; Sport Business Analytics; Sport Management; Tourism and Travel Management; Trust Management"
         },
         {
-         "t": "Phase-outs not reported"
+         "t": "9 graduate certificates: Business Analytics; Business Fundamentals; Entrepreneurship & Innovation; Finance; Generative AI for Business; International Business; Leadership in Social Innovation; Strategic Leadership; Technology Product Management"
+        },
+        {
+         "t": "Undergraduate certificates in Business Essentials (for non-Lerner majors) and Innovation and Entrepreneurship"
+        },
+        {
+         "t": "13 new degree programs since the last AACSB review: 5 undergraduate (Business Analytics, Computer Science and Business, Fintech, Global Business, Human Resource Management) and 8 graduate (four M.S. in Accounting concentrations, Applied AI for Business, Financial Services Analytics, Hospitality and Sport Business Analytics, and the MBA/M.A. in Strategic Communication)"
+        },
+        {
+         "t": "Financial Reporting minor launched in 2024"
         }
        ]
       ]
@@ -321,7 +365,16 @@ body.editing .card{cursor:pointer}
          "t": "Siegfried Hall plans include a Student Success and Excellence Center for advising and career services"
         },
         {
-         "t": "Siegfried Hall is still in planning"
+         "t": "Siegfried Hall is planned to open in 2030"
+        },
+        {
+         "t": "Undergraduate second-fall retention reached 93.0% for the 2024–25 cohort, the highest in six years"
+        },
+        {
+         "t": "Four-year graduation rate rose from 77.5% to 81.8% (2020–21 to 2021–22 entering cohorts)"
+        },
+        {
+         "t": "Graduate second-fall retention rose to 98% (2024–25 cohort), and the two-year M.S. graduation rate climbed from 69% to 89%"
         }
        ]
       ],
@@ -345,13 +398,22 @@ body.editing .card{cursor:pointer}
        "Expand alumni and industry outreach to generate more internships, co-ops and career opportunities for Lerner students.",
        [
         {
-         "t": "95% placement rate and $70,000 average starting salary"
+         "t": "Class of 2025 undergraduates: 92% employed or continuing their education, with a $67,500 median salary; Accounting had the highest median ($83,000) and Financial Planning and Wealth Management the highest employment rate (92%)"
         },
         {
          "t": "Lerner Co-op delivered 60+ paid placements in under two years"
         },
         {
          "t": "Job Shadow Program hosted 30+ experiences in its pilot year"
+        },
+        {
+         "t": "Internship at the Beach: Hospitality & Sport Business Management partnered with the Rehoboth Beach-Dewey Beach Chamber of Commerce; the pilot placed 20 students in a hospitality internship course to help ease the beach’s hospitality staffing shortage, and the program is now expanding"
+        },
+        {
+         "t": "Class of 2025 graduate students: 87% employed and 4% continuing their education, with an $80,000 median salary; the Online MBA led with 96% employed and a $99,500 median"
+        },
+        {
+         "t": "Accounting graduates: 97% employed (2025), with top hiring by EY (82 hires), KPMG (78) and PwC (57) from 2020 to 2025"
         }
        ]
       ]
@@ -369,6 +431,15 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "MAEEE has 540+ graduates from 39 states and 15 countries"
+        },
+        {
+         "t": "240 new graduate students enrolled in fall 2025, part of Lerner’s largest-ever incoming class"
+        },
+        {
+         "t": "Non-MBA graduate enrollment grew 23% (279 to 344 students, 2020–21 to 2025–26), led by the in-person M.S. in Business Analytics and Information Management, which more than doubled to 142"
+        },
+        {
+         "t": "M.S. in Applied AI for Business enrolled 43 students in its first year (2025–26)"
         }
        ]
       ],
@@ -396,6 +467,27 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "CEEE received the Albert Beekhuis Center of Excellence Award"
+        },
+        {
+         "t": "Launched the Associate in Science in Business Administration, letting students begin college and learn business on a smaller campus for 2 years before transitioning"
+        },
+        {
+         "t": "803 first-time freshmen enrolled in 2025–26, up 41% from 570 in 2020–21; total undergraduate enrollment grew 18% to 3,811"
+        },
+        {
+         "t": "First-time freshman applications rose 41% (6,948 to 9,794) and transfer applications 64% (2020–21 to 2025–26)"
+        },
+        {
+         "t": "Incoming average SAT rose from 1,249 to 1,292 (2020–21 to 2025–26), and new honors students grew from 53 to 82"
+        },
+        {
+         "t": "First-generation students rose from 12.1% to 15.9% of the incoming class, and Delaware residents from 23.0% to 26.4%"
+        },
+        {
+         "t": "Scholarships and student support rose 74% to $2.7M (FY2021 to FY2026)"
+        },
+        {
+         "t": "EntreX program for high school students"
         }
        ]
       ]
@@ -416,6 +508,9 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "Leadership & Ethics Case Competition launched in 2024"
+        },
+        {
+         "t": "Financial Planning Center opened November 2025: senior financial planning majors and CFP® professionals provide free financial coaching to UD students, faculty and staff"
         }
        ]
       ],
@@ -433,13 +528,14 @@ body.editing .card{cursor:pointer}
          "t": "Global business capstones"
         },
         {
-         "t": "Experiential projects from the first semester"
+         "t": "All first-year business students work on business research projects with real start-ups and for-profit and nonprofit organizations"
         }
        ]
       ]
      ]
     }
-   ]
+   ],
+   "aacsb": "Learner Success: Standards 4 (Curriculum), 5 (Assurance of Learning), 6 (Learner Progression) and 7 (Teaching Effectiveness and Impact)"
   },
   {
    "id": "scholarship",
@@ -473,7 +569,19 @@ body.editing .card{cursor:pointer}
          "t": "Output includes Management Science, Marketing Science, AMJ and AMR"
         },
         {
-         "t": "Secure computing environments for 9 data use agreements on controlled data"
+         "t": "Secure computing environments for 8 data use agreements in the past year"
+        },
+        {
+         "t": "Research standing rose from outside the top 90 to the 80s nationally, with a goal of reaching the 50s (August 2025)"
+        },
+        {
+         "t": "792 intellectual contributions over the 2020–2026 review period, 69% of them peer-reviewed journal articles"
+        },
+        {
+         "t": "75% of participating faculty produced intellectual contributions"
+        },
+        {
+         "t": "More than 30 market, firm and economic datasets licensed, plus WRDS, Bloomberg, Compustat and other research platforms"
         }
        ]
       ],
@@ -572,6 +680,12 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "Faculty leadership roles in DSI, SMA, AOM and INFORMS"
+        },
+        {
+         "t": "Accounting: BYU research breadth ranking of #61, 13 editorial board or associate editor roles, and 3 faculty among the BYU top 50 researchers in their areas"
+        },
+        {
+         "t": "Teaching honors: Honors College Excellence in Honors Teaching Award (2026) and AAA Cook Prize for undergraduate accounting teaching (2022)"
         }
        ]
       ]
@@ -613,12 +727,16 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "Academic Showcase web hub features faculty research and honors"
+        },
+        {
+         "t": "Climbed 9 places to No. 41 worldwide in The Case Centre’s 2026 Impact Index for faculty-written teaching cases"
         }
        ]
       ]
      ]
     }
-   ]
+   ],
+   "aacsb": "Thought Leadership: Standard 8 (Impact of Scholarship), with Standard 3 (Faculty and Professional Staff Resources)"
   },
   {
    "id": "operations",
@@ -634,13 +752,13 @@ body.editing .card{cursor:pointer}
        "Build a state-of-the-art facility with cutting-edge technology and flexible learning spaces to support instruction, collaboration, faculty-student engagement, industry partnerships and innovative co-curricular activities.",
        [
         {
-         "t": "$71.5M Siegfried gift secured for Siegfried Hall"
+         "t": "Record $71.5M Siegfried gift, the largest in UD history (March 2025), secured for Siegfried Hall"
         },
         {
          "t": "VDC Annex development plans approved"
         },
         {
-         "t": "Financial Planning Center opened with Charles Schwab"
+         "t": "Financial Planning Center opened November 2025 with Charles Schwab Foundation support"
         },
         {
          "t": "Space utilization audit and fixes for bottlenecks in Purnell and Lerner Halls"
@@ -650,6 +768,21 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "More than $60M of the $120M Transformative Excellence investment secured (August 2025)"
+        },
+        {
+         "t": "$20M of the Transformative Excellence investment earmarked for new academic programs and faculty and staff hiring"
+        },
+        {
+         "t": "New $75M facility planned to open in 2030, with a large lecture hall, classrooms, a student success center, and space for the Neil Book School and Siegfried Institute"
+        },
+        {
+         "t": "University committed to a capital renovation of Purnell Hall within five years"
+        },
+        {
+         "t": "Multi-use suite in Purnell Hall for experiential learning, sales and case competitions and student organizations (2026–27)"
+        },
+        {
+         "t": "Virtual computing environment used by 1,500+ students each semester"
         }
        ]
       ],
@@ -674,6 +807,15 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "Horn tracks startup survival (63% across 104 ventures)"
+        },
+        {
+         "t": "Formal risk analysis rates six strategic risks, with mitigation plans and owners for each"
+        },
+        {
+         "t": "Societal impact plan launched with economic impact as its focus and three tracked indicators; 2026 baseline: 730 communications on Lerner’s economic impact, and employers and mentors rate that impact 4.0 of 5"
+        },
+        {
+         "t": "Dean’s Advisory Council retreat each semester reviews progress on the strategic plan"
         }
        ]
       ],
@@ -715,6 +857,12 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "Summer faculty support not reported"
+        },
+        {
+         "t": "Total revenue grew 32% (from $52.6M to $69.4M, FY2021–FY2026), and endowment, gift and other non-tuition revenue nearly doubled to $14.0M"
+        },
+        {
+         "t": "About $6M a year planned for 25 strategic initiatives, plus faculty recruitment and compensation"
         }
        ]
       ],
@@ -758,16 +906,14 @@ body.editing .card{cursor:pointer}
          "t": "Professional Attire Fund awards nearly $20,000 a year to 100+ students"
         },
         {
-         "t": "Women’s Leadership Summit"
-        },
-        {
          "t": "Outreach partnership with the Wilmington Community Center"
         }
        ]
       ]
      ]
     }
-   ]
+   ],
+   "aacsb": "Strategic Management and Innovation: Standards 1 (Strategic Planning), 2 (Physical, Virtual and Financial Resources) and 3 (Faculty and Professional Staff Resources)"
   },
   {
    "id": "ai",
@@ -793,6 +939,9 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "Responsible AI and simulation modules in core courses"
+        },
+        {
+         "t": "Agentic AI Boot Camp: three-day hands-on program with AI development tools (40 students in spring 2026, 45 in fall 2026)"
         }
        ]
       ],
@@ -826,6 +975,9 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "FinTech–PropTech research partnership with Warwick Business School’s Gillmore Centre (November 2025)"
+        },
+        {
+         "t": "Faculty access to leading AI models from Anthropic, OpenAI, Microsoft and Google through an internal AI gateway"
         }
        ]
       ]
@@ -852,6 +1004,9 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "Expanded 4+1 MBA pathways"
+        },
+        {
+         "t": "M.S. in Applied AI for Business enrolled 43 students in its first year (2025–26)"
         }
        ]
       ],
@@ -922,7 +1077,8 @@ body.editing .card{cursor:pointer}
       ]
      ]
     }
-   ]
+   ],
+   "aacsb": "Standards 4 (Curriculum: technology agility), 7 (Teaching Effectiveness) and 8 (Impact of Scholarship)"
   },
   {
    "id": "innovation",
@@ -957,6 +1113,9 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "Research Advisory Board created for Social Venture and Impact Accelerator programs"
+        },
+        {
+         "t": "Pocket MBA program for local businesses"
         }
        ]
       ],
@@ -1053,7 +1212,8 @@ body.editing .card{cursor:pointer}
       ]
      ]
     }
-   ]
+   ],
+   "aacsb": "Standards 9 (Engagement and Societal Impact) and 8 (Impact of Scholarship)"
   },
   {
    "id": "leadership",
@@ -1144,6 +1304,9 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "Career Lab and mentoring programs"
+        },
+        {
+         "t": "Siegfried Youth Leadership Program for high school students"
         }
        ]
       ]
@@ -1158,9 +1321,6 @@ body.editing .card{cursor:pointer}
        [
         {
          "t": "25th Weinberg Corporate Governance Symposium"
-        },
-        {
-         "t": "Women’s Leadership Summit"
         },
         {
          "t": "Annual Economic Forecast conference"
@@ -1187,7 +1347,8 @@ body.editing .card{cursor:pointer}
       ]
      ]
     }
-   ]
+   ],
+   "aacsb": "Standards 8 (Impact of Scholarship) and 9 (Engagement and Societal Impact)"
   }
  ]
 }</script>
@@ -1237,7 +1398,7 @@ function renderDetail(focusSel){
   const p=PILLARS.find(x=>x.id===current), it=allItems(p), c=counts(it), d=document.getElementById("detail");
   d.innerHTML="";
   const h=el("div","detail-head");
-  h.innerHTML=`<div class="eyebrow">${p.kind} · ${c.a} of ${it.length} achieving</div><h2>${esc(p.name)}</h2><p class="goal">${esc(p.goal)}</p>`;
+  h.innerHTML=`<div class="eyebrow">${p.kind} · ${c.a} of ${it.length} achieving</div><h2>${esc(p.name)}</h2><p class="goal">${esc(p.goal)}</p>${p.aacsb?`<p class="aacsb"><b>AACSB alignment:</b> ${esc(p.aacsb)}</p>`:""}`;
   d.appendChild(h);
   if(!editing){
     const tb=el("div","toolbar");tb.setAttribute("role","group");tb.setAttribute("aria-label","Filter by status");
