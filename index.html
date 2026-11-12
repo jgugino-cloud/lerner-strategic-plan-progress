@@ -165,6 +165,15 @@ body.editing .card{cursor:pointer}
 .mast .plan-link{display:inline-block;margin-top:10px;font-size:14px;font-weight:700;color:var(--gold);text-decoration:none}
 .mast .plan-link:hover{text-decoration:underline}
 .mast .plan-link:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.head-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start;margin-bottom:8px}
+.head-grid>.outcomes[hidden]{display:none}
+@media (max-width:900px){.head-grid{grid-template-columns:1fr;gap:4px}}
+.outcomes{margin:4px 0 8px;padding:16px 20px;background:var(--hl-bg);border-left:4px solid var(--achieved);border-radius:6px}
+.outcomes[hidden]{display:none}
+.out-h{margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--achieved)}
+.out-list{margin:0;padding-left:18px;font-size:13.5px;line-height:1.45}
+.out-list li{break-inside:avoid;margin-bottom:7px}
+.outcomes .hl-row{background:var(--bg);margin-bottom:8px}
 @media print{#submit,#editbar,.edit-open{display:none!important}}
 </style>
 
@@ -274,16 +283,7 @@ body.editing .card{cursor:pointer}
        "Improve the relevance and competitiveness of our academic programs through expanding and strengthening advisory boards and industry connections.",
        [
         {
-         "t": "Ranked #52 nationally for undergraduate business by Poets & Quants, up 13 spots and named “10 to Watch”"
-        },
-        {
-         "t": "#26 of 377 Best Online MBA Programs (U.S. News & World Report, 2026)"
-        },
-        {
-         "t": "Named one of Poets&Quants’ 10 Business Schools to Watch of 2026"
-        },
-        {
-         "t": "Expanded the Lerner Business Advisory Board"
+         "t": "Expanded the Lerner Business Advisory Board and the Lerner NYC Advisory Council"
         },
         {
          "t": "Collaborated with Microsoft and AWS on course module design"
@@ -299,12 +299,6 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "Accounting Advisory Board meets twice a year, joined by a Young Professionals Advisory Board of alumni with 5–10 years’ experience"
-        },
-        {
-         "t": "New Director of Corporate Affairs position manages relationships with corporate partners"
-        },
-        {
-         "t": "Accounting ranked #16 among public schools by The Wall Street Journal for high-paying accounting jobs (2024)"
         }
        ]
       ],
@@ -313,7 +307,13 @@ body.editing .card{cursor:pointer}
        "Weave the three Lerner Frontiers—AI Transformation & Technology, Innovation and Societal Change, and Leadership & Organizations—appropriately throughout the business and economics curricula to ensure seamless integration into the educational experience.",
        [
         {
-         "t": "Responsible AI and simulation modules in core courses"
+         "t": "Incorporated AI literacy into foundational courses"
+        },
+        {
+         "t": "Piloting an AI Ethics and Policy course for first-year students"
+        },
+        {
+         "t": "Launched a minor in Applied AI for Business"
         },
         {
          "t": "Entrepreneurship minors offered to students"
@@ -337,10 +337,7 @@ body.editing .card{cursor:pointer}
        "Continuously review all our academic programs to identify new opportunities to enrich our program portfolio and phase out those that are out-of-date or not aligned with our strategic priorities.",
        [
         {
-         "t": "Reorganized from 5 to 6 departments and a school, including a new BAOT department"
-        },
-        {
-         "t": "Launched FinTech, HR Management, AI, and Computer Science and Business programs (Computer Science and Business is interdisciplinary with the Computer Science Department in the College of Engineering)"
+         "t": "13 new degree programs since the last AACSB review: 5 undergraduate (Business Analytics, Computer Science and Business, Fintech, Global Business, Human Resource Management) and 8 graduate (four M.S. in Accounting concentrations, Applied AI for Business, Financial Services Analytics, Hospitality and Sport Business Analytics, and the MBA/M.A. in Strategic Communication)"
         },
         {
          "t": "Redesigned the marketing B.S. with customer strategy and sales leadership concentrations"
@@ -349,19 +346,13 @@ body.editing .card{cursor:pointer}
          "t": "Merged the International Business Studies and Global Enterprise Management programs into one cohesive Global Business program"
         },
         {
-         "t": "24 undergraduate minors: Advertising; Applied AI for Business; Beverage Management; Business Administration; Business Analytics; Economics; Entrepreneurship; Event Management; Financial Reporting; Fintech; Gastronomy and Cuisines; Integrated Design; International Business; Management; Management Information Systems; Professional Selling and Sales Management; Real Estate Management; Restaurant Management; Social Innovation and Entrepreneurship; Spa and Wellness Management; Sport Business Analytics; Sport Management; Tourism and Travel Management; Trust Management"
+         "t": "Placed the online M.S. in Accounting Practice on hiatus (2025) after reviewing enrollment"
         },
         {
-         "t": "9 graduate certificates: Business Analytics; Business Fundamentals; Entrepreneurship & Innovation; Finance; Generative AI for Business; International Business; Leadership in Social Innovation; Strategic Leadership; Technology Product Management"
+         "t": "Recent additions: Real Estate Management, Sport Business Analytics, Tourism and Travel Management, Applied AI for Business and Financial Reporting (2024) minors, plus Generative AI for Business and Technology Product Management graduate certificates"
         },
         {
          "t": "Undergraduate certificates in Business Essentials (for non-Lerner majors) and Innovation and Entrepreneurship"
-        },
-        {
-         "t": "13 new degree programs since the last AACSB review: 5 undergraduate (Business Analytics, Computer Science and Business, Fintech, Global Business, Human Resource Management) and 8 graduate (four M.S. in Accounting concentrations, Applied AI for Business, Financial Services Analytics, Hospitality and Sport Business Analytics, and the MBA/M.A. in Strategic Communication)"
-        },
-        {
-         "t": "Financial Reporting minor launched in 2024"
         }
        ]
       ]
@@ -375,19 +366,10 @@ body.editing .card{cursor:pointer}
        "Unify all academic support services into one comprehensive center to magnify the impact of career services, advising, and UDREAM on students’ current and future success.",
        [
         {
-         "t": "Siegfried Hall plans include a Student Success and Excellence Center for advising and career services"
+         "t": "Actively fundraising for, developing and planning Siegfried Hall, which will include a Student Success and Excellence Center for advising and career services"
         },
         {
          "t": "Siegfried Hall is planned to open in 2030"
-        },
-        {
-         "t": "Undergraduate second-fall retention reached 93.0% for the 2024–25 cohort, the highest in six years"
-        },
-        {
-         "t": "Four-year graduation rate rose from 77.5% to 81.8% (2020–21 to 2021–22 entering cohorts)"
-        },
-        {
-         "t": "Graduate second-fall retention rose to 98% (2024–25 cohort), and the two-year M.S. graduation rate climbed from 69% to 89%"
         }
        ]
       ],
@@ -420,7 +402,7 @@ body.editing .card{cursor:pointer}
          "t": "Job Shadow Program hosted 30+ experiences in its pilot year"
         },
         {
-         "t": "Internship at the Beach: Hospitality & Sport Business Management partnered with the Rehoboth Beach-Dewey Beach Chamber of Commerce; the pilot placed 20 students in a hospitality internship course to help ease the beach’s hospitality staffing shortage, and the program is now expanding"
+         "t": "Internship at the Beach: Hospitality & Sport Business Management partnered with the Rehoboth Beach-Dewey Beach Chamber of Commerce; the pilot placed 25 students in a hospitality internship course to help ease the beach’s hospitality staffing shortage, and the program is now expanding"
         },
         {
          "t": "Class of 2025 graduate students: 87% employed and 4% continuing their education, with an $80,000 median salary; the Online MBA led with 96% employed and a $99,500 median"
@@ -446,13 +428,7 @@ body.editing .card{cursor:pointer}
          "t": "MAEEE has 540+ graduates from 39 states and 15 countries"
         },
         {
-         "t": "240 new graduate students enrolled in fall 2025, part of Lerner’s largest-ever incoming class"
-        },
-        {
-         "t": "Non-MBA graduate enrollment grew 23% (279 to 344 students, 2020–21 to 2025–26), led by the in-person M.S. in Business Analytics and Information Management, which more than doubled to 142"
-        },
-        {
-         "t": "M.S. in Applied AI for Business enrolled 43 students in its first year (2025–26)"
+         "t": "New partnership agreement with City University Ajman, with a 2+2 program in development"
         }
        ]
       ],
@@ -486,18 +462,6 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "803 first-time freshmen enrolled in 2025–26, up 41% from 570 in 2020–21; total undergraduate enrollment grew 18% to 3,811"
-        },
-        {
-         "t": "First-time freshman applications rose 41% (6,948 to 9,794) and transfer applications 64% (2020–21 to 2025–26)"
-        },
-        {
-         "t": "Incoming average SAT rose from 1,249 to 1,292 (2020–21 to 2025–26), and new honors students grew from 53 to 82"
-        },
-        {
-         "t": "First-generation students rose from 12.1% to 15.9% of the incoming class, and Delaware residents from 23.0% to 26.4%"
-        },
-        {
-         "t": "Scholarships and student support rose 74% to $2.7M (FY2021 to FY2026)"
         },
         {
          "t": "EntreX program for high school students"
@@ -548,7 +512,15 @@ body.editing .card{cursor:pointer}
      ]
     }
    ],
-   "aacsb": "Learner Success: Standards 4 (Curriculum), 5 (Assurance of Learning), 6 (Learner Progression) and 7 (Teaching Effectiveness and Impact)"
+   "aacsb": "Learner Success: Standards 4 (Curriculum), 5 (Assurance of Learning), 6 (Learner Progression) and 7 (Teaching Effectiveness and Impact)",
+   "outcomes": [
+    "92% of Class of 2025 undergraduates employed or continuing their education, with a $67,500 median salary",
+    "Class of 2025 graduate students: 87% employed with an $80,000 median salary; the Online MBA led with 96% employed and a $99,500 median",
+    "97% of accounting graduates employed (2025)",
+    "803 first-time freshmen enrolled in 2025–26, up 41% since 2020–21; total undergraduate enrollment up 18% to 3,811",
+    "Faculty sufficiency of 81% (AACSB norm: 75%) and 71% Scholarly Academic faculty (AACSB minimum: 40%)",
+    "13 new degree programs since the last AACSB review"
+   ]
   },
   {
    "id": "scholarship",
@@ -567,7 +539,7 @@ body.editing .card{cursor:pointer}
          "t": "30+ internal research grants"
         },
         {
-         "t": "Research assistant and postdoc support"
+         "t": "Research assistant support"
         },
         {
          "t": "LLM subscriptions"
@@ -576,22 +548,7 @@ body.editing .card{cursor:pointer}
          "t": "Streamlined funding workflows"
         },
         {
-         "t": "53 publications in FT50, UTD24 and Department-A ranked journals since 2024"
-        },
-        {
-         "t": "Output includes Management Science, Marketing Science, AMJ and AMR"
-        },
-        {
          "t": "Secure computing environments for 8 data use agreements in the past year"
-        },
-        {
-         "t": "Research standing rose from outside the top 90 to the 80s nationally, with a goal of reaching the 50s (August 2025)"
-        },
-        {
-         "t": "792 intellectual contributions over the 2020–2026 review period, 69% of them peer-reviewed journal articles"
-        },
-        {
-         "t": "75% of participating faculty produced intellectual contributions"
         },
         {
          "t": "More than 30 market, firm and economic datasets licensed, plus WRDS, Bloomberg, Compustat and other research platforms"
@@ -715,19 +672,28 @@ body.editing .card{cursor:pointer}
          "t": "Graduate student travel grants launched"
         },
         {
-         "t": "Faculty conference funding not reported"
+         "t": "Funding for faculty conference travel continues to be allocated to the departments and school"
         }
        ]
       ],
       [
-       "p",
+       "a",
        "Organize and promote internal research events like the Lerner Faculty Research Showcase and Distinguished Speaker Series to recognize faculty’s research achievements.",
        [
         {
-         "t": "Inaugural Lerner Distinguished Faculty Speaker Series featured Carlos Asarta and Bintong Chen (March 2025)"
+         "t": "Faculty Research Showcase (November 2026): four scholars presented work recently published in top-tier journals, including Marketing Science"
         },
         {
-         "t": "No Faculty Research Showcase found since November 2023"
+         "t": "Emerging Scholar Research Showcase (April 2025): four assistant professors from accounting, economics, marketing and hospitality presented their research"
+        },
+        {
+         "t": "Faculty Research Showcase (October 2024): five faculty from economics, finance, hospitality, management and MIS presented recent findings"
+        },
+        {
+         "t": "Fintech Faculty Research Showcase (November 2023): 15 faculty gave lightning talks to spark cross-disciplinary fintech collaboration"
+        },
+        {
+         "t": "Inaugural Lerner Distinguished Faculty Speaker Series featured Carlos Asarta and Bintong Chen (March 2025)"
         }
        ]
       ],
@@ -749,7 +715,15 @@ body.editing .card{cursor:pointer}
      ]
     }
    ],
-   "aacsb": "Thought Leadership: Standard 8 (Impact of Scholarship), with Standard 3 (Faculty and Professional Staff Resources)"
+   "aacsb": "Thought Leadership: Standard 8 (Impact of Scholarship), with Standard 3 (Faculty and Professional Staff Resources)",
+   "outcomes": [
+    "No. 41 worldwide in The Case Centre’s 2026 Impact Index, up 9 places",
+    "~3 interdisciplinary grants totaling $3.4M",
+    "78 faculty media stories in 2025–26, including The New York Times, Reuters, Bloomberg and CNBC",
+    "Management Research Summit drew 18+ Mid-Atlantic schools, its largest yet (March 2025)",
+    "Global AI teaching workshop drew nearly 200 educators from 140+ universities (May 2025)",
+    "Four research showcases held since 2023"
+   ]
   },
   {
    "id": "operations",
@@ -765,7 +739,7 @@ body.editing .card{cursor:pointer}
        "Build a state-of-the-art facility with cutting-edge technology and flexible learning spaces to support instruction, collaboration, faculty-student engagement, industry partnerships and innovative co-curricular activities.",
        [
         {
-         "t": "Record $71.5M Siegfried gift, the largest in UD history (March 2025), secured for Siegfried Hall"
+         "t": "New $75M facility planned to open in 2030, with a large lecture hall, classrooms, a student success center, and space for the Neil Book School and Siegfried Institute"
         },
         {
          "t": "VDC Annex development plans approved"
@@ -780,19 +754,10 @@ body.editing .card{cursor:pointer}
          "t": "Technology upgrades to two computing labs serving 17 courses"
         },
         {
-         "t": "More than $60M of the $120M Transformative Excellence investment secured (August 2025)"
-        },
-        {
-         "t": "$20M of the Transformative Excellence investment earmarked for new academic programs and faculty and staff hiring"
-        },
-        {
-         "t": "New $75M facility planned to open in 2030, with a large lecture hall, classrooms, a student success center, and space for the Neil Book School and Siegfried Institute"
-        },
-        {
          "t": "University committed to a capital renovation of Purnell Hall within five years"
         },
         {
-         "t": "Multi-use suite in Purnell Hall for experiential learning, sales and case competitions and student organizations (2026–27)"
+         "t": "Lerner Creative Inquiry Studio in Purnell Hall for experiential learning, sales and case competitions and student organizations (2026–27)"
         },
         {
          "t": "Virtual computing environment used by 1,500+ students each semester"
@@ -837,6 +802,9 @@ body.editing .card{cursor:pointer}
        "Foster a culture of in-person engagement by encouraging faculty and staff to utilize on-campus spaces for research discussions, mentoring, and collaborative initiatives.",
        [
         {
+         "t": "Implemented a four-day-a-week in-person work policy for staff"
+        },
+        {
          "t": "Annual Lerner leadership retreat"
         },
         {
@@ -850,6 +818,12 @@ body.editing .card{cursor:pointer}
         },
         {
          "t": "Lerner Staff Engagement and Recognition Committee runs in-person community service and team-building activities"
+        },
+        {
+         "t": "Lerner Diversity Council brings students, staff, faculty and alumni together through monthly Lunch and Learn discussions, events and Business Discovery Day for high school students"
+        },
+        {
+         "t": "Lerner Diversity Council earned Insight Into Academia’s Inspiring Programs in Business Award for the second straight year (2025) and was recognized in AACSB’s Innovations That Inspire spotlight, one of 24 business schools featured"
         },
         {
          "t": "New faculty mentored by experienced faculty"
@@ -926,7 +900,14 @@ body.editing .card{cursor:pointer}
      ]
     }
    ],
-   "aacsb": "Strategic Management and Innovation: Standards 1 (Strategic Planning), 2 (Physical, Virtual and Financial Resources) and 3 (Faculty and Professional Staff Resources)"
+   "aacsb": "Strategic Management and Innovation: Standards 1 (Strategic Planning), 2 (Physical, Virtual and Financial Resources) and 3 (Faculty and Professional Staff Resources)",
+   "outcomes": [
+    "Total revenue up 32% to $69.4M, and non-tuition revenue nearly doubled to $14.0M (FY2021–FY2026)",
+    "New $75M facility planned to open in 2030",
+    "Reorganized into 6 departments and a school (July 2026)",
+    "1,500+ students use the virtual computing environment each semester",
+    "Lerner Diversity Council won the Inspiring Programs in Business Award two years running and was featured in AACSB’s Innovations That Inspire"
+   ]
   },
   {
    "id": "ai",
@@ -962,6 +943,9 @@ body.editing .card{cursor:pointer}
        "p",
        "Enhance digital literacy through hands-on workshops and technology-driven learning experiences for faculty and staff.",
        [
+        {
+         "t": "Teaching showcase “Meet Your New TA: Using AI to Enhance Your Classroom Content” gave faculty hands-on practice with AI tools for course design (December 2024)"
+        },
         {
          "t": "OpenAI and Anthropic business subscriptions with 40 current users"
         },
@@ -1091,7 +1075,14 @@ body.editing .card{cursor:pointer}
      ]
     }
    ],
-   "aacsb": "Standards 4 (Curriculum: technology agility), 7 (Teaching Effectiveness) and 8 (Impact of Scholarship)"
+   "aacsb": "Standards 4 (Curriculum: technology agility), 7 (Teaching Effectiveness) and 8 (Impact of Scholarship)",
+   "outcomes": [
+    "M.S. in Applied AI for Business enrolled 43 students in its first year (2025–26)",
+    "Agentic AI Boot Camp: 40 students in spring 2026 and 45 in fall 2026",
+    "Generative AI for Business Certificate graduated its first student",
+    "20 research computing systems managed for faculty, and 40 faculty and staff using AI business subscriptions",
+    "FinTech–PropTech research partnership with Warwick Business School’s Gillmore Centre (November 2025)"
+   ]
   },
   {
    "id": "innovation",
@@ -1226,7 +1217,14 @@ body.editing .card{cursor:pointer}
      ]
     }
    ],
-   "aacsb": "Standards 9 (Engagement and Societal Impact) and 8 (Impact of Scholarship)"
+   "aacsb": "Standards 9 (Engagement and Societal Impact) and 8 (Impact of Scholarship)",
+   "outcomes": [
+    "Undergraduate entrepreneurship ranked Top 25 nationally and #3 in the Mid-Atlantic (Princeton Review, 2026)",
+    "104 tracked ventures raised $11.8M in follow-on funding",
+    "Neil Book School of Innovation & Entrepreneurship launched July 1, 2026",
+    "Summer Founders supported 12 ventures with $36,000 in grants; Hen Hatch awards $50,000 in prizes",
+    "~3 interdisciplinary grants totaling $3.4M with Nursing, Engineering and Health"
+   ]
   },
   {
    "id": "leadership",
@@ -1361,7 +1359,14 @@ body.editing .card{cursor:pointer}
      ]
     }
    ],
-   "aacsb": "Standards 8 (Impact of Scholarship) and 9 (Engagement and Societal Impact)"
+   "aacsb": "Standards 8 (Impact of Scholarship) and 9 (Engagement and Societal Impact)",
+   "outcomes": [
+    "25th anniversary Weinberg Corporate Governance Symposium",
+    "Thinkers50, Highly Cited Researcher and AOM Decade Award recognition for faculty research",
+    "New Edgar S. Woolard Jr. Chair of Corporate Governance established",
+    "Executive education certificates piloted with about 30 participants",
+    "Siegfried Institute for leadership and free enterprise launched"
+   ]
   }
  ]
 }</script>
@@ -1407,12 +1412,33 @@ function renderSummary(){
 function changed(summary){dirty=true;setEditMsg();if(summary)renderSummary()}
 
 // Detail
+function renderOutcomes(p){
+  if(!Array.isArray(p.outcomes))p.outcomes=[];
+  const w=el("section","outcomes");w.setAttribute("aria-label","Key outcomes");
+  w.appendChild(el("h3","out-h","Key outcomes"));
+  if(editing){
+    p.outcomes.forEach((t,k)=>{
+      const box=el("div","hl-row");
+      const ta=document.createElement("textarea");ta.className="ed";ta.rows=2;ta.value=t;ta.placeholder="Outcome with a number (e.g., 93.0% undergraduate retention)";ta.setAttribute("aria-label","Key outcome");ta.dataset.k=`o-${k}`;
+      ta.addEventListener("input",()=>{p.outcomes[k]=ta.value;changed(false)});
+      const rm=el("button","linkbtn danger","Remove");rm.type="button";rm.addEventListener("click",()=>{p.outcomes.splice(k,1);changed(false);renderDetail()});
+      box.append(ta,rm);w.appendChild(box);
+    });
+    const a=el("button","linkbtn","+ Add key outcome");a.type="button";a.addEventListener("click",()=>{p.outcomes.push("");changed(false);renderDetail(`[data-k="o-${p.outcomes.length-1}"]`)});w.appendChild(a);
+    return w;
+  }
+  const os=p.outcomes.filter(t=>t.trim());
+  if(!os.length){w.hidden=true;return w}
+  w.appendChild(el("ul","out-list",os.map(t=>`<li>${esc(t)}</li>`).join("")));
+  return w;
+}
 function renderDetail(focusSel){
   const p=PILLARS.find(x=>x.id===current), it=allItems(p), c=counts(it), d=document.getElementById("detail");
   d.innerHTML="";
   const h=el("div","detail-head");
   h.innerHTML=`<div class="eyebrow">${p.kind} · ${c.a} of ${it.length} achieving</div><h2>${esc(p.name)}</h2><p class="goal">${esc(p.goal)}</p>${p.aacsb?`<p class="aacsb"><b>AACSB alignment:</b> ${esc(p.aacsb)}</p>`:""}`;
-  d.appendChild(h);
+  const hg=el("div","head-grid");hg.append(h,renderOutcomes(p));
+  d.appendChild(hg);
   if(!editing){
     const tb=el("div","toolbar");tb.setAttribute("role","group");tb.setAttribute("aria-label","Filter by status");
     [["all","All",it.length],...ORDER.map(s=>[s,LABEL[s],c[s]])].forEach(([k,l,n])=>{
@@ -1537,7 +1563,7 @@ document.getElementById("subForm").addEventListener("submit",e=>{
   e.preventDefault();
   const lines=fH.value.split("\n").map(x=>x.trim()).filter(Boolean);
   if(fT.value==="edit"&&fH.value===prefill&&!fS.value){setMsg("Change the wording before sending.",true);fH.focus();return}
-  if(!lines.length&&!fS.value){setMsg("Add at least one highlight or choose a status change.",true);fH.focus();return}
+  if(!lines.length&&!fS.value){setMsg("Add a highlight or choose a status change.",true);fH.focus();return}
   if(!fNm.value.trim()){setMsg("Add your name so the update can be followed up.",true);fNm.focus();return}
   const f=itemByKey(fI.value);if(!f){setMsg("Choose an action item.",true);return}
   const ed=fT.value==="edit";
