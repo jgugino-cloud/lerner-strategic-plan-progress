@@ -9,7 +9,7 @@
   --bg:#F3F5F9; --surface:#FFFFFF; --fg:#14213A; --muted:#5E6B82; --line:#DDE3EC;
   --brand:#00539F; --brand-ink:#FFFFFF; --gold:#FFD200;
   --achieved:#00539F; --progress:#EBB000; --none:#9AA5B8;
-  --hl-bg:#E8F0F9; --hl-none:#FFFFFF; --err:#B3261E;
+  --hl-bg:#E8F0F9;--out-bg:#FFF6D9;--out-accent:#D4A300;--out-ink:#6B5000; --hl-none:#FFFFFF; --err:#B3261E;
   --font-ui:"Public Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
   --font-serif:"Source Serif 4",Georgia,"Times New Roman",serif;
 }
@@ -17,12 +17,12 @@
   --bg:#0E1522; --surface:#162133; --fg:#E7ECF4; --muted:#9AA8BE; --line:#26344B;
   --brand:#0A4A8C; --brand-ink:#FFFFFF; --gold:#FFD200;
   --achieved:#4D9BE6; --progress:#F2C230; --none:#6F7C92;
-  --hl-bg:#1C2D46; --hl-none:#162133; --err:#FF8A80; color-scheme:dark}}
+  --hl-bg:#1C2D46;--out-bg:#2D2716;--out-accent:#FFD200;--out-ink:#FFD866; --hl-none:#162133; --err:#FF8A80; color-scheme:dark}}
 :root[data-theme="dark"]{
   --bg:#0E1522; --surface:#162133; --fg:#E7ECF4; --muted:#9AA8BE; --line:#26344B;
   --brand:#0A4A8C; --brand-ink:#FFFFFF; --gold:#FFD200;
   --achieved:#4D9BE6; --progress:#F2C230; --none:#6F7C92;
-  --hl-bg:#1C2D46; --hl-none:#162133; --err:#FF8A80; color-scheme:dark}
+  --hl-bg:#1C2D46;--out-bg:#2D2716;--out-accent:#FFD200;--out-ink:#FFD866; --hl-none:#162133; --err:#FF8A80; color-scheme:dark}
 
 body{background:var(--bg);color:var(--fg);font-family:var(--font-ui);font-size:14px;line-height:1.45}
 .wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
@@ -168,9 +168,9 @@ body.editing .card{cursor:pointer}
 .head-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:start;margin-bottom:8px}
 .head-grid>.outcomes[hidden]{display:none}
 @media (max-width:900px){.head-grid{grid-template-columns:1fr;gap:4px}}
-.outcomes{margin:4px 0 8px;padding:16px 20px;background:var(--hl-bg);border-left:4px solid var(--achieved);border-radius:6px}
+.outcomes{margin:4px 0 8px;padding:16px 20px;background:var(--out-bg);border-left:4px solid var(--out-accent);border-radius:6px}
 .outcomes[hidden]{display:none}
-.out-h{margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--achieved)}
+.out-h{margin:0 0 10px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--out-ink)}
 .out-list{margin:0;padding-left:18px;font-size:13.5px;line-height:1.45}
 .out-list li{break-inside:avoid;margin-bottom:7px}
 .outcomes .hl-row{background:var(--bg);margin-bottom:8px}
@@ -516,7 +516,6 @@ body.editing .card{cursor:pointer}
    "outcomes": [
     "92% of Class of 2025 undergraduates employed or continuing their education, with a $67,500 median salary",
     "Class of 2025 graduate students: 87% employed with an $80,000 median salary; the Online MBA led with 96% employed and a $99,500 median",
-    "97% of accounting graduates employed (2025)",
     "803 first-time freshmen enrolled in 2025–26, up 41% since 2020–21; total undergraduate enrollment up 18% to 3,811",
     "Faculty sufficiency of 81% (AACSB norm: 75%) and 71% Scholarly Academic faculty (AACSB minimum: 40%)",
     "13 new degree programs since the last AACSB review"
@@ -637,7 +636,7 @@ body.editing .card{cursor:pointer}
        "Recognize research excellence for quality and productivity.",
        [
         {
-         "t": "Professor Fei Xie named inaugural Faculty Research Director at the Weinberg Center"
+         "t": "Professor Fei Xie, Edgar S. Woolard Jr. Chair in Corporate Governance, named inaugural Faculty Research Director at the Weinberg Center"
         },
         {
          "t": "National honors including Thinkers50, Highly Cited Researcher, a Fulbright, the AOM Decade Award, a JMR long-term impact award and the O’Neill Multiplier Award"
@@ -693,7 +692,7 @@ body.editing .card{cursor:pointer}
          "t": "Fintech Faculty Research Showcase (November 2023): 15 faculty gave lightning talks to spark cross-disciplinary fintech collaboration"
         },
         {
-         "t": "Inaugural Lerner Distinguished Faculty Speaker Series featured Carlos Asarta and Bintong Chen (March 2025)"
+         "t": "Inaugural Lerner Distinguished Faculty Speaker Series featured Carlos Asarta, Bank of America Professor of Business, and Bintong Chen, Chaplin Tyler Professor (March 2025)"
         }
        ]
       ],
@@ -840,7 +839,7 @@ body.editing .card{cursor:pointer}
        "Raise funds to establish more endowed chairs and term professorships, and summer support for faculty.",
        [
         {
-         "t": "Newly established Edgar S. Woolard Jr. Chair of Corporate Governance, with Fei Xie appointed (September 2026)"
+         "t": "Fei Xie appointed to the Edgar S. Woolard Jr. Chair in Corporate Governance (September 2026)"
         },
         {
          "t": "Summer faculty support not reported"
@@ -923,13 +922,16 @@ body.editing .card{cursor:pointer}
        "Embed AI and Technology into undergraduate and graduate curricula.",
        [
         {
-         "t": "MS in Applied AI for Business"
+         "t": "M.S. in Applied AI for Business"
         },
         {
-         "t": "Applied AI undergraduate minor"
+         "t": "Undergraduate minor in Applied AI for Business"
         },
         {
-         "t": "AI major in the MBA"
+         "t": "AI concentration in the MBA"
+        },
+        {
+         "t": "Incorporated AI literacy into foundational undergraduate courses"
         },
         {
          "t": "Responsible AI and simulation modules in core courses"
@@ -991,7 +993,7 @@ body.editing .card{cursor:pointer}
          "t": "MS in Applied AI"
         },
         {
-         "t": "Generative AI for Business Certificate (first graduate)"
+         "t": "Generative AI for Business Graduate Certificate (first graduate)"
         },
         {
          "t": "M.A. in Econ Data Analytics"
@@ -1012,7 +1014,7 @@ body.editing .card{cursor:pointer}
        "Develop workshops and non-degree programs tailored to workforce upskilling in cutting-edge technologies.",
        [
         {
-         "t": "Executive education certificates piloted with about 30 participants"
+         "t": "Developed the Generative AI for Business Graduate Certificate"
         }
        ]
       ],
@@ -1079,7 +1081,7 @@ body.editing .card{cursor:pointer}
    "outcomes": [
     "M.S. in Applied AI for Business enrolled 43 students in its first year (2025–26)",
     "Agentic AI Boot Camp: 40 students in spring 2026 and 45 in fall 2026",
-    "Generative AI for Business Certificate graduated its first student",
+    "Generative AI for Business Graduate Certificate graduated its first student",
     "20 research computing systems managed for faculty, and 40 faculty and staff using AI business subscriptions",
     "FinTech–PropTech research partnership with Warwick Business School’s Gillmore Centre (November 2025)"
    ]
@@ -1240,10 +1242,10 @@ body.editing .card{cursor:pointer}
        "Fund impactful faculty research on leadership, management, reporting and corporate governance through seed grants and sponsored partnerships.",
        [
         {
-         "t": "New Woolard Chair supports corporate governance teaching and research"
+         "t": "Edgar S. Woolard Jr. Chair in Corporate Governance, held by Professor Fei Xie, supports corporate governance teaching and research"
         },
         {
-         "t": "Inaugural Faculty Research Director named at the Weinberg Center"
+         "t": "Inaugural Faculty Research Director in corporate governance"
         },
         {
          "t": "30+ internal research grants across the college"
@@ -1255,9 +1257,6 @@ body.editing .card{cursor:pointer}
        "Establish and leverage centers and institutes to increase the visibility of research via annual showcases and marketing faculty publications.",
        [
         {
-         "t": "Siegfried Institute for leadership and free enterprise launched"
-        },
-        {
          "t": "25th Anniversary Weinberg Corporate Governance Symposium"
         }
        ]
@@ -1267,10 +1266,10 @@ body.editing .card{cursor:pointer}
        "Increase top-tier journal publications, citations, media coverage and policy adoption in leadership, organization and corporate governance.",
        [
         {
-         "t": "Published in Academy of Management Journal and Review"
+         "t": "Publications in leading journals such as Academy of Management Journal and Academy of Management Review"
         },
         {
-         "t": "Thinkers50, Highly Cited Researcher and AOM Decade Award recognition (Dr. Wendy Smith)"
+         "t": "Thinkers50, Highly Cited Researcher and AOM Decade Award recognition (Dr. Wendy Smith, Dana J. Johnson Professor)"
         },
         {
          "t": "Editor and editorial board roles at FT50 journals"
@@ -1288,9 +1287,6 @@ body.editing .card{cursor:pointer}
        [
         {
          "t": "Corporate governance education delivered to the Board of Trustees"
-        },
-        {
-         "t": "Executive education certificates piloted with about 30 participants"
         }
        ]
       ],
@@ -1363,9 +1359,7 @@ body.editing .card{cursor:pointer}
    "outcomes": [
     "25th anniversary Weinberg Corporate Governance Symposium",
     "Thinkers50, Highly Cited Researcher and AOM Decade Award recognition for faculty research",
-    "New Edgar S. Woolard Jr. Chair of Corporate Governance established",
-    "Executive education certificates piloted with about 30 participants",
-    "Siegfried Institute for leadership and free enterprise launched"
+    "Professor Fei Xie appointed to the Edgar S. Woolard Jr. Chair in Corporate Governance"
    ]
   }
  ]
