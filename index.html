@@ -181,7 +181,7 @@ body.editing .card{cursor:pointer}
 <header class="mast"><div class="wrap"><div class="mast-row"><div>
   <div class="eyebrow">Transformative Excellence</div>
   <h1>2025–2030 Strategic Plan Progress</h1>
-  <div class="asof" id="asof">Snapshot as of November 10, 2026</div>
+  <div class="asof" id="asof">Snapshot as of November 16, 2026</div>
   <p class="intro">This dashboard tracks the progress of the Lerner College of Business and Economics on <em>Transformative Excellence</em>, our 2025–2030 strategic plan. It shows the status of every action item across the plan’s three Foundations and three Frontiers, along with highlights of what has been accomplished and how the work aligns with AACSB accreditation standards. Anyone can share new progress or suggest an edit using the links in each action item.</p>
   <a class="plan-link" href="https://lerner.udel.edu/why-lerner/strategic-plan" target="_blank" rel="noopener">Read the full strategic plan <span aria-hidden="true">→</span></a>
   </div><button type="button" class="edit-open" id="editBtn" hidden>Edit</button></div>
@@ -240,7 +240,7 @@ body.editing .card{cursor:pointer}
 </main>
 
 <script type="application/json" id="plan-data">{
- "asOf": "2026-11-10",
+ "asOf": "2026-11-16",
  "pillars": [
   {
    "id": "education",
@@ -1403,7 +1403,9 @@ function renderSummary(){
   });
 }
 
-function changed(summary){dirty=true;setEditMsg();if(summary)renderSummary()}
+let manualDate=false;
+function todayISO(){const t=new Date();return t.getFullYear()+"-"+String(t.getMonth()+1).padStart(2,"0")+"-"+String(t.getDate()).padStart(2,"0")}
+function changed(summary){dirty=true;if(!manualDate&&DATA.asOf!==todayISO()){DATA.asOf=todayISO();renderAsOf();const ai=document.getElementById("asofIn");if(ai)ai.value=DATA.asOf}setEditMsg();if(summary)renderSummary()}
 
 // Detail
 function renderOutcomes(p){
@@ -1516,7 +1518,7 @@ function setEditing(on){
 }
 editBtn.addEventListener("click",()=>{setEditing(true);document.getElementById("detail").scrollIntoView({block:"start"})});
 document.getElementById("doneBtn").addEventListener("click",()=>setEditing(false));
-asofIn.addEventListener("change",()=>{if(asofIn.value){DATA.asOf=asofIn.value;renderAsOf();changed(false)}});
+asofIn.addEventListener("change",()=>{if(asofIn.value){manualDate=true;DATA.asOf=asofIn.value;renderAsOf();changed(false)}});
 document.getElementById("saveBtn").addEventListener("click",()=>{
   const json=JSON.stringify(DATA,null,1).replace(/</g,"\\u003c");
   const out=TEMPLATE.replace(/(<script type="application\/json" id="plan-data">)[\s\S]*?(<\/script>)/,(m,a,b)=>a+json+b);
